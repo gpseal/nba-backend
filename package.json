@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "express": "^4.17.3",
+    "node.js": "^0.0.1-security"
+  },
+  "name": "intro-app-dev-2022-project-1-node-js-rest-api-gpseal",
+  "description": "intro-app-dev-2022-project-1-node-js-rest-api-gpseal created by GitHub Classroom\r cvb",
+  "version": "1.0.0",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/otago-polytechnic-bit-courses/intro-app-dev-2022-project-1-node-js-rest-api-gpseal.git"
+  },
+  "author": "Greg Seal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/otago-polytechnic-bit-courses/intro-app-dev-2022-project-1-node-js-rest-api-gpseal/issues"
+  },
+  "homepage": "https://github.com/otago-polytechnic-bit-courses/intro-app-dev-2022-project-1-node-js-rest-api-gpseal#readme"
+}
