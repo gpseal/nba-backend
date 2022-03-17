@@ -79,8 +79,8 @@ const deleteTeam = (req, res) => {
 };
 
 export {
-  getInstitutions,
-  createInstitution,
-  updateInstitution,
-  deleteInstitution,
+  getTeams,
+  createTeam,
+  updateTeam,
+  deleteTeam,
 };
