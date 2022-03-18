@@ -1,7 +1,12 @@
+import dotenv from "dotenv";
 import express from "express";
+
+import conn from "./db/connection.js"; //
 
 // Access all the routes exported from routes/teams.js
 import teams from "./routes/teams.js";
+
+dotenv.config(); //reads .env file, assigns to process.env
 
 // Create an Express application
 const app = express();
@@ -16,6 +21,15 @@ app.use(express.json()); // Parses incoming requests with JSON payloads
 app.use("/api/teams", teams);
 
 // Listening on port 3000
-app.listen(PORT, () => {
-  console.log(`Server is listening on port ${PORT}`);
-});
+const start = async () => {
+  try {
+    await conn(process.env.MONGO_URI); // Access the connection string in .env
+    app.listen(PORT, () => console.log(`Server is listening on port ${PORT}`));
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+start(); //connects to MongoDb, starts development server
+
+export default app;

@@ -1,7 +1,10 @@
 {
   "dependencies": {
+    "dotenv": "^16.0.0",
     "express": "^4.17.3",
-    "node.js": "^0.0.1-security"
+    "mongoose": "^6.2.7",
+    "node.js": "^0.0.1-security",
+    "nodemon": "^2.0.15"
   },
   "name": "intro-app-dev-2022-project-1-node-js-rest-api-gpseal",
   "description": "intro-app-dev-2022-project-1-node-js-rest-api-gpseal created by GitHub Classroom\r cvb",
@@ -9,7 +12,8 @@
   "main": "app.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
   },
   "repository": {
     "type": "git",

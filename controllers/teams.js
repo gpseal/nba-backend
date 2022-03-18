@@ -1,81 +1,78 @@
 // Importing teams from data,js
 import { teams } from "../data.js";
 
+import Team from "../models/teams.js";
+
 //GET function
-const getTeams = (req, res) => {
-  res.status(200).json({ success: true, data: teams });
+const getTeams = async (req, res) => {
+  try {
+    const teams = await Team.find({}); // waiting for data from model constructor, {} represents all
+    res.status(200).json({ success: true, data: teams });
+  } catch (err) {
+    res.status(500).json({
+      msg: err.message || "Something went wrong while getting all teams",
+    });
+  }
 };
 
-// POST function
-const createTeam = (req, res) => {
-  const { name } = req.body; //
 
-  if (!name) {  //make sure a name has been added
-    return res
-      .status(400)
-      .json({ success: false, msg: "Please provide a name" });//displays json message if unsuccessful
+//POST function
+const createTeam = async (req, res) => {
+  try {
+    await Team.create(req.body); //creating object from request body
+    
+    const newTeams = await Team.find({}); //The {} inside Team.find() represents all
+
+    res.status(201).json({ success: true, data: newTeams }); //sends newTeams data as response
+  } catch (err) {
+    res.status(500).json({
+      msg: err.message || "Something went wrong while creating an team",
+    });
   }
-
-  const id = teams[teams.length - 1].id + 1; //finds id at end of array
-  // Key names are identical to assignment variables, so use property value shorthand
-  teams.push({//adds new object to array
-    id,
-    name,
-    city,
-    stadium,
-    conference,
-    division,
-  });
-  res.status(201).json({ success: true, data: teams });//displays json message if successful along with updated data
 };
 
-const updateTeam = (req, res) => {
-  const { id } = req.params;
-  const team = teams.find(
-    (team) => team.id === Number(id) //searches for object to update based on ID
-  );
+//UPDATE FUNCTION
+const updateTeam = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const team = await Team.findByIdAndUpdate(id, req.body);
 
-  // Check if team does exist
-  if (!team) {
-    return res
-      .status(404)
-      .json({ success: false, msg: `No team with the id ${id}` });
-  }
-
-  const newTeams = teams.map((team) => { //updates object within array based on ID number, new data array is created "newTeams"
-    if (team.id === Number(id)) {
-      // If team does exist, update its data
-      team.name = req.body.name;
-      team.city = req.body.city;
-      team.stadium = req.body.stadium;
-      team.conference = req.body.conference;
-      team.division = req.body.division;
+    if (!team) { //checks if id exists
+      return res.status(404).json({
+        success: false,
+        msg: `No team with the id ${id}`,
+      });
     }
-    return team;
-  });
 
-  res.status(200).json({ success: true, data: newTeams });  //replaces existing data with updated data
+    const newTeams = await Team.find({}); //data with updated entry is created
+    res.status(200).json({ success: true, data: newTeams });
+  } catch (err) {
+    res.status(500).json({
+      msg: err.message || "Something went wrong while updating an team",
+    });
+  }
 };
-
 
 // DELETE function
-const deleteTeam = (req, res) => {
-  const { id } = req.params;
-  const team = teams.find(
-    (team) => team.id === Number(id)
-  );
+const deleteTeam = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const team = await Team.findByIdAndRemove(id);
 
-  // Check if team does exist
-  if (!team) {
-    return res
-      .status(404)
-      .json({ success: false, msg: `No team with the id ${id}` });
+    if (!team) {
+      return res.status(404).json({
+        success: false,
+        msg: `No team with the id ${id}`,
+      });
+    }
+
+    const newTeams = await Team.find({});
+    return res.status(200).json({ success: true, data: newTeams });
+  } catch (err) {
+    res.status(500).json({
+      msg: err.message || "Something went wrong while deleting an team",
+    });
   }
-
-  const newTeams = teams.filter( //creates new array from function
-    (team) => team.id !== Number(id) // If team ID does not match entered ID, add to newTeams array
-  );
-  res.status(200).json({ success: true, data: newTeams });  //replaces existing data with updated data
 };
 
 export {
