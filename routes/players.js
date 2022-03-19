@@ -3,20 +3,13 @@ const router = Router(); // Create a new router object. This allows to handle va
 
 // Importing the four functions
 import {
-  getTeams,
-  getTeamsID,
-  createTeam,
-  updateTeam,
-  deleteTeam,
-} from "../controllers/teams.js";
+  getPlayers,
+  createPlayer,
+} from "../controllers/players.js";
 
 // Four routes that are mapped to the functions above
-router.route("/").get(getTeams);
-router.route("/:id").get(getTeamsID);
-router.route("/").post(createTeam);
-
-router.route("/:id").put(updateTeam);
-router.route("/:id").delete(deleteTeam);
+router.route("/").get(getPlayers);
+router.route("/").post(createPlayer);
 
 // You can chain these if you wish. For example:
 // router.route("/").get(getInstitution).post(createInstitution)

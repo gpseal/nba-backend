@@ -1,23 +1,25 @@
 import mongoose from "mongoose";
 
+//creates schema definition
 const teamsSchema = new mongoose.Schema({
   name: {
     type: String,
+    required: true,
+    unique: true,
+    maxlength: 100,
   },
-  city: {
+
+  location: {
     type: String,
+    maxlength: 100,
   },
-  stadium: {
-    type: String,
-  },
-  conference: {
-    type: String,
-  },
-  division: {
-    type: String,
-  },
+
+  players: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Player",
+    },
+  ],
 });
 
-
-
-export default mongoose.model("Team", teamsSchema); //constructor compiled from schema
+export default mongoose.model("Team", teamsSchema); // shape of collection
