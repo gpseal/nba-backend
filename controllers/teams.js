@@ -1,4 +1,4 @@
-import { teams } from "../data.js";
+// import { teams } from "../data.js";
 
 import Team from "../models/teams.js";
 

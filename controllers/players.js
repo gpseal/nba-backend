@@ -1,5 +1,5 @@
 import Player from "../models/players.js";
-import Institution from "../models/teams.js";
+import Team from "../models/teams.js";
 
 const getPlayers = async (req, res) => {
   try {
@@ -17,12 +17,12 @@ const createPlayer = async (req, res) => {
     const player = new Player(req.body);
     await player.save();
 
-    // Find a institution by its id, then push the created player to its list of players.
-    const institution = await Institution.findById({
+    // Find a team by its id, then push the created player to its list of players.
+    const team = await Team.findById({
       _id: player.team,
     });
-    institution.players.push(player);
-    await institution.save();
+    team.players.push(player);
+    await team.save();
 
     const newPlayers = await Player.find({});
     res.status(201).json({ success: true, data: newPlayers });

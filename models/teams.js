@@ -20,6 +20,12 @@ const teamsSchema = new mongoose.Schema({
       ref: "Player",
     },
   ],
+
+  coach: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Coach",
+  }
+
 });
 
 export default mongoose.model("Team", teamsSchema); // shape of collection

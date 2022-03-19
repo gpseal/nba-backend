@@ -6,6 +6,7 @@ import conn from "./db/connection.js";
 //Access all the routes exported from routes/institutions.js
 import teams from "./routes/teams.js"
 import players from "./routes/players.js"
+import coaches from "./routes/coaches.js"
 
 dotenv.config();
 
@@ -20,6 +21,7 @@ app.use(express.json());
 //To make it clear to the consumer that the application is an API, prefix the endpoint with /api
 app.use("/api/teams", teams) 
 app.use("/api/players", players) 
+app.use("/api/coaches", coaches) 
 
 //connects to mongo db
 const start = async () => {
