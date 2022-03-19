@@ -1,5 +1,6 @@
 
 import Coach from "../models/coaches.js";
+import Team from "../models/teams.js";
 // import { coaches } from "../data.js";
 
 // coach => success: true, data:  array of objects from data.js
@@ -15,8 +16,6 @@ const getCoaches = async (req, res) => {
     });
   }
 };
-
-
 
 const getCoachesID = (req, res) => {
   const { id } = req.params;
@@ -37,21 +36,26 @@ const getCoachesID = (req, res) => {
 
 };
 
-
-
 const createCoach = async (req, res) => {
-  try {
-    await Coach.create(req.body);
-
-    const newCoaches = await Coach.find({});
-
-    res.status(201).json({ success: true, data: newCoaches });
-  } catch (err) {
-    res.status(500).json({
-      msg: err.message || "Something went wrong while creating an coach",
-    });
-  }
-};
+    try {
+      const coach = new Coach(req.body);
+      await coach.save();
+  
+      // Find a team by its id, then add coach
+      const team = await Team.findById({
+        _id: coach.team,
+      });
+      team.coach = coach;
+      await team.save();
+  
+      const newCoaches = await Coach.find({});
+      res.status(201).json({ success: true, data: newCoaches });
+    } catch (err) {
+      res.status(500).json({
+        msg: err.message || "Something went wrong while creating a player",
+      });
+    }
+  };
 
 
   

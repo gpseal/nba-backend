@@ -9,9 +9,32 @@ const teamsSchema = new mongoose.Schema({
     maxlength: 100,
   },
 
-  location: {
+  city: {
+    type: String,
+    required: true,
+    maxlength: 100,
+  },
+
+  stadium: {
     type: String,
     maxlength: 100,
+  },
+
+  division: {
+    type: String,
+    // required: true,
+    maxlength: 100,
+  },
+
+  conference: {
+    type: String,
+    // required: true,
+    maxlength: 100,
+  },
+
+  record: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Record",
   },
 
   players: [

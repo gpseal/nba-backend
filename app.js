@@ -7,6 +7,7 @@ import conn from "./db/connection.js";
 import teams from "./routes/teams.js"
 import players from "./routes/players.js"
 import coaches from "./routes/coaches.js"
+import records from "./routes/records.js"
 
 dotenv.config();
 
@@ -22,6 +23,7 @@ app.use(express.json());
 app.use("/api/teams", teams) 
 app.use("/api/players", players) 
 app.use("/api/coaches", coaches) 
+app.use("/api/records", records) 
 
 //connects to mongo db
 const start = async () => {
