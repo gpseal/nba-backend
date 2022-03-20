@@ -5,11 +5,14 @@ const router = Router(); // Create a new router object. This allows to handle va
 import {
   getPlayers,
   createPlayer,
+  updatePlayer,
+  getPlayerID,
+  deletePlayer
 } from "../controllers/players.js";
 
 // Four routes that are mapped to the functions above
-router.route("/").get(getPlayers);
-router.route("/").post(createPlayer);
+router.route("/").get(getPlayers).post(createPlayer);
+router.route("/:id").put(updatePlayer).get(getPlayerID).delete(deletePlayer);
 
 // You can chain these if you wish. For example:
 // router.route("/").get(getInstitution).post(createInstitution)

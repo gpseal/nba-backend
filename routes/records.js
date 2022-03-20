@@ -4,15 +4,15 @@ const router = Router(); // Create a new router object. This allows to handle va
 // Importing the four functions
 import {
   getRecords,
+  getRecordID,
   createRecord,
+  updateRecord,
+  deleteRecord,
 } from "../controllers/records.js";
 
 // Four routes that are mapped to the functions above
-router.route("/").get(getRecords);
-router.route("/").post(createRecord);
+router.route("/").get(getRecords).post(createRecord);
+router.route("/:id").put(updateRecord).get(getRecordID).delete(deleteRecord);
 
-// You can chain these if you wish. For example:
-// router.route("/").get(getInstitution).post(createInstitution)
-// router.route("/:id").put(updateInstitution).delete(deleteInstitution)
 
 export default router; // You do not need to enclose router in curly braces

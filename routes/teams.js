@@ -11,12 +11,12 @@ import {
 } from "../controllers/teams.js";
 
 // Four routes that are mapped to the functions above
-router.route("/").get(getTeams);
-router.route("/:id").get(getTeamsID);
-router.route("/").post(createTeam);
+// router.route("/:id").get(getTeamsID);
+// router.route("/").post(createTeam);
 
-router.route("/:id").put(updateTeam);
-router.route("/:id").delete(deleteTeam);
+router.route("/").get(getTeams).post(createTeam);
+router.route("/:id").put(updateTeam).get(getTeamsID).delete(deleteTeam);
+// router.route("/:id").delete(deleteTeam);
 
 // You can chain these if you wish. For example:
 // router.route("/").get(getInstitution).post(createInstitution)

@@ -1,9 +1,8 @@
 
 import Coach from "../models/coaches.js";
 import Team from "../models/teams.js";
-// import { coaches } from "../data.js";
 
-// coach => success: true, data:  array of objects from data.js
+
 const getCoaches = async (req, res) => {
   try {
     const coaches = await Coach.find({});
@@ -17,23 +16,26 @@ const getCoaches = async (req, res) => {
   }
 };
 
-const getCoachesID = (req, res) => {
-  const { id } = req.params;
-  // /coaches/1      requests specific id to update
 
-  const coach = coaches.find(  //find section to send
-    (coach) => coach.id === Number(id)
-  );
-
-  // Check if coach does exist
-  if (!coach) {
-    return res
-      .status(404)
-      .json({ success: false, msg: `No coach with the id ${id}` });
-  }
-
-  res.status(200).json({success: true, data: coach});
-
+const getCoachID = async (req, res) => {
+    try {
+      const { id } = req.params;
+      const coach = await Coach.findById(id);
+      console.log(coach)
+  
+      if (!coach) {
+        return res.status(404).json({
+          success: false,
+          msg: `No coach with the id ${id}`,
+        });
+      }
+  
+      return res.status(200).json({ success: true, data: coach });
+    } catch (err) {
+      res.status(500).json({
+        msg: err.message || "Something went wrong while deleting an coach",
+      });
+    }
 };
 
 const createCoach = async (req, res) => {
@@ -55,10 +57,10 @@ const createCoach = async (req, res) => {
         msg: err.message || "Something went wrong while creating a player",
       });
     }
-  };
+};
 
   
-  const updateCoach = async (req, res) => {
+const updateCoach = async (req, res) => {
     try {
       const { id } = req.params;
       const coach = await Coach.findByIdAndUpdate(id, req.body); //find section to update
@@ -71,18 +73,18 @@ const createCoach = async (req, res) => {
         });
       }
   
-      const newCoaches = await Coach.find({});
-      res.status(200).json({ success: true, data: newCoaches });
+      const updatedCoach = await Coach.findById(id);
+      res.status(200).json({ success: true, data: updatedCoach });
 
     } catch (err) {  //display error if something went wrong
       res.status(500).json({
         msg: err.message || "Something went wrong while updating an coach",
       });
     }
-  };
+};
 
   
-  const deleteCoach = async (req, res) => {
+const deleteCoach = async (req, res) => {
     try {
       const { id } = req.params;
       const coach = await Coach.findByIdAndRemove(id);
@@ -101,13 +103,13 @@ const createCoach = async (req, res) => {
         msg: err.message || "Something went wrong while deleting an coach",
       });
     }
-  };
+};
 
 
-  export {
+export {
     getCoaches,
-    getCoachesID,
+    getCoachID,
     createCoach,
     updateCoach,
     deleteCoach,
-  };
+};

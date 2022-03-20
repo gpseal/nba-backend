@@ -1,8 +1,8 @@
 
 import Record from "../models/records.js";
-// import { records } from "../data.js";
+import Team from "../models/teams.js";
 
-// record => success: true, data:  array of objects from data.js
+
 const getRecords = async (req, res) => {
   try {
     const records = await Record.find({});
@@ -17,43 +17,57 @@ const getRecords = async (req, res) => {
 };
 
 
-const getRecordsID = (req, res) => {
-  const { id } = req.params;
-  // /records/1      requests specific id to update
-
-  const record = records.find(  //find section to send
-    (record) => record.id === Number(id)
-  );
-
-  // Check if record does exist
-  if (!record) {
-    return res
-      .status(404)
-      .json({ success: false, msg: `No record with the id ${id}` });
-  }
-
-  res.status(200).json({success: true, data: record});
-
+const getRecordID = async (req, res) => {
+    try {
+      const { id } = req.params;
+      const record = await Record.findById(id);
+  
+      if (!record) {
+        return res.status(404).json({
+          success: false,
+          msg: `No record with the id ${id}`,
+        });
+      }
+  
+      return res.status(200).json({ success: true, data: record });
+    } catch (err) {
+      res.status(500).json({
+        msg: err.message || "Something went wrong while deleting an record",
+      });
+    }
 };
-
 
 const createRecord = async (req, res) => {
-  try {
-    await Record.create(req.body);
+    try {
+      const record = new Record(req.body);
+      await record.save();
+  
+      // Find a team by its id, then add record
+      const team = await Team.findById({
+        _id: record.team,
+      });
+      team.record = record;
 
-    const newRecords = await Record.find({});
-
-    res.status(201).json({ success: true, data: newRecords });
-  } catch (err) {
-    res.status(500).json({
-      msg: err.message || "Something went wrong while creating an record",
-    });
-  }
+      // if (record) {
+      //   return res.status(404).json({
+      //     success: false,
+      //     msg: `Record for this team already exists, please update existing record`,
+      //   });
+      // }
+    
+      await team.save();
+  
+      const newRecords = await Record.find({});
+      res.status(201).json({ success: true, data: newRecords });
+    } catch (err) {
+      res.status(500).json({
+        msg: err.message || "Something went wrong while creating a player",
+      });
+    }
 };
 
-
   
-  const updateRecord = async (req, res) => {
+const updateRecord = async (req, res) => {
     try {
       const { id } = req.params;
       const record = await Record.findByIdAndUpdate(id, req.body); //find section to update
@@ -66,18 +80,18 @@ const createRecord = async (req, res) => {
         });
       }
   
-      const newRecords = await Record.find({});
-      res.status(200).json({ success: true, data: newRecords });
+      const updatedRecord = await Record.findById(id);
+      res.status(200).json({ success: true, data: updatedRecord });
 
     } catch (err) {  //display error if something went wrong
       res.status(500).json({
         msg: err.message || "Something went wrong while updating an record",
       });
     }
-  };
+};
 
   
-  const deleteRecord = async (req, res) => {
+const deleteRecord = async (req, res) => {
     try {
       const { id } = req.params;
       const record = await Record.findByIdAndRemove(id);
@@ -96,13 +110,13 @@ const createRecord = async (req, res) => {
         msg: err.message || "Something went wrong while deleting an record",
       });
     }
-  };
+};
 
 
-  export {
+export {
     getRecords,
-    getRecordsID,
+    getRecordID,
     createRecord,
     updateRecord,
     deleteRecord,
-  };
+};

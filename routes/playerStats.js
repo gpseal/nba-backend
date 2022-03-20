@@ -3,16 +3,16 @@ const router = Router(); // Create a new router object. This allows to handle va
 
 // Importing the four functions
 import {
-  getCoaches,
-  getCoachID,
-  createCoach,
-  updateCoach,
-  deleteCoach,
-} from "../controllers/coaches.js";
+  getPlayerStats,
+  getPlayerStatID,
+  createPlayerStat,
+  updatePlayerStat,
+  deletePlayerStat,
+} from "../controllers/playerStats.js";
 
 // Four routes that are mapped to the functions above
-router.route("/").get(getCoaches).post(createCoach);
-router.route("/:id").put(updateCoach).get(getCoachID).delete(deleteCoach);
+router.route("/").get(getPlayerStats).post(createPlayerStat);
+router.route("/:id").put(updatePlayerStat).get(getPlayerStatID).delete(deletePlayerStat);
 
 
 export default router; // You do not need to enclose router in curly braces

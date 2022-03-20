@@ -1,36 +1,32 @@
 import mongoose from "mongoose";
 
-const recordsSchema = new mongoose.Schema({
+const playerStatsSchema = new mongoose.Schema({
+
   games: {
     type: Number,
     maxlength: 10,
   },
   
-  wins: {
+  ppg: {
     type: Number,
     maxlength: 10,
   },
 
-  losses: {
+  rpg: {
     type: Number,
     maxlength: 10,
   },
 
-  confRank: {
+  apg: {
     type: Number,
     maxlength: 10,
   },
 
-  gamesBehind: {
-    type: Number,
-    maxlength: 10,
-  },
-
-  team: {
+  player: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Team",
+    ref: "Player",
   },
   
 });
 
-export default mongoose.model("Record", recordsSchema);
+export default mongoose.model("PlayerStat", playerStatsSchema);

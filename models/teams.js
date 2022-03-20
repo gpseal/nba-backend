@@ -6,30 +6,30 @@ const teamsSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
-    maxlength: 100,
+    maxlength: 20,
   },
 
   city: {
     type: String,
-    required: true,
-    maxlength: 100,
+    // required: true,
+    maxlength: 20,
   },
 
   stadium: {
     type: String,
-    maxlength: 100,
+    maxlength: 50,
   },
 
   division: {
     type: String,
     // required: true,
-    maxlength: 100,
+    maxlength: 20,
   },
 
   conference: {
     type: String,
     // required: true,
-    maxlength: 100,
+    maxlength: 20,
   },
 
   record: {
