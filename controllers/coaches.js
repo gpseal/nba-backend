@@ -57,7 +57,6 @@ const createCoach = async (req, res) => {
     }
   };
 
-
   
   const updateCoach = async (req, res) => {
     try {
