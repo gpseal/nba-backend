@@ -1,6 +1,6 @@
 
 import PlayerStat from "../models/playerStats.js";
-import Team from "../models/teams.js";
+import Player from "../models/players.js";
 
 
 const getPlayerStats = async (req, res) => {
@@ -42,11 +42,12 @@ const createPlayerStat = async (req, res) => {
       const playerStat = new PlayerStat(req.body);
       await playerStat.save();
   
-      // Find a team by its id, then add playerStat
-      const team = await Team.findById({
-        _id: playerStat.team,
+      // Find a player by its id, then add playerStat
+      const player = await Player.findById({
+        _id: playerStat.player,
       });
-      team.playerStat = playerStat;
+
+      player.playerStats = playerStat;
 
       // if (playerStat) {
       //   return res.status(404).json({
@@ -55,7 +56,7 @@ const createPlayerStat = async (req, res) => {
       //   });
       // }
     
-      await team.save();
+      await player.save();
   
       const newPlayerStats = await PlayerStat.find({});
       res.status(201).json({ success: true, data: newPlayerStats });

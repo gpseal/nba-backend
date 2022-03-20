@@ -17,7 +17,7 @@ const playersSchema = new mongoose.Schema({
   position: {
     type: String,
     required: true,
-    maxlength: 20,
+    maxlength: 100,
   },
 
   age: {
