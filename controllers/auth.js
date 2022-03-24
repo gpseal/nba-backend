@@ -7,9 +7,9 @@ const register = async (req, res) => {
     try {
       const user = await User.create(req.body); //collect user data
       const tokenUser = getTokenUserData(user); //get users name and ID from user data (getTokenUserData is a function in utils folder)
-      res.status(201).json({ success: true, data: tokenUser });
+      return res.status(201).json({ success: true, data: tokenUser });
     } catch (err) {
-      res.status(500).json({
+      return res.status(500).json({
         msg: err.message || "Something went wrong while registering a user",
       });
     }
@@ -22,19 +22,19 @@ const register = async (req, res) => {
       
       const user = await User.findOne({ email });
       if (!user) {  //if email is incorrect
-        res.status(401).json({ success: false, msg: "Invalid email" });
+        return res.status(401).json({ success: false, msg: "Invalid email" });
       }
   
       const isPasswordCorrect = await user.comparePassword(password);
       if (!isPasswordCorrect) {  //if password is incorrect
-        res.status(401).json({ success: false, msg: "Invalid password" });
+        return es.status(401).json({ success: false, msg: "Invalid password" });
       }
   
       const tokenUser = getTokenUserData(user);
       attachCookiesToResponse({ res, user: tokenUser }); //from utils/jwt.js
-      res.status(201).json({ success: true, data: tokenUser });
+      return res.status(201).json({ success: true, data: tokenUser });
     } catch (err) {
-      res.status(500).json({
+      return res.status(500).json({
         msg: err.message || "Something went wrong while logging in a user",
       });
     }
@@ -46,7 +46,7 @@ const register = async (req, res) => {
       httpOnly: true,
       expires: new Date(Date.now() + 1000), // 1000 milliseconds = 1 second
     });
-    res.status(200).json({ success: true, msg: "Logged out" });
+    return res.status(200).json({ success: true, msg: "Logged out" });
   };
 
   export { 

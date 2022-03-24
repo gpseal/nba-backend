@@ -5,12 +5,12 @@ const router = Router(); // Create a new router object. This allows to handle va
 import {
     register,
     login,
-    logout 
+    logout,
 } from "../controllers/auth.js";
 
-// Four routes that are mapped to the functions above
-router.route("/").get(register)
-router.route("/:id").put(login).get(logout)
 
+router.route("/register").post(register)
+router.route("/login").post(login)
+router.route("/logout").post(logout)
 
 export default router; // You do not need to enclose router in curly braces
