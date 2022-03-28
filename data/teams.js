@@ -1,6 +1,16 @@
 const teams = [
-    { name: "Mavericks" },
-    { name: "Suns" }
+    {   name: "Bulls",
+        city: "Chicago",
+        stadium: "United Center",
+        division: "Central",
+        conference: "East"
+    },
+    {   name: "Jazz",
+        city: "Utah",
+        stadium: "Vivint Arena",
+        division: "Northwest",
+        conference: "West"
+    },
 ]
 
 export { teams };

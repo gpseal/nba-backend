@@ -31,7 +31,7 @@ const deleteTeams = async () => {
   }
 };
 
-switch (process.argv[2]) { //decides which function to run based on input in terminal.  "npm run institutions:create" will enter teams, ""npm run institutions:delete"" will delete teams
+switch (process.argv[2]) { //decides which function to run based on input in terminal.  "npm run teams:create" will enter teams, ""npm run teams:delete"" will delete teams
   case "-d": { //add more cases to perform different functions
     // This case is looking for a specific flag, i.e., -d
     deleteTeams();

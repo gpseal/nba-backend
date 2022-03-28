@@ -101,7 +101,6 @@ const deleteTeam = async (req, res) => {
   }
 };
 
-
 export {
   getTeams,
   getTeamsID,

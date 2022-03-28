@@ -34,7 +34,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cookieParser(process.env.JWT_SECRET));
 
-app.use(limit); //applies rate-limit to all requests
+// app.use(limit); //applies rate-limit to all requests
 
 
 //To make it clear to the consumer that the application is an API, prefix the endpoint with /api
