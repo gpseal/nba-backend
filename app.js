@@ -2,6 +2,9 @@ import cookieParser from "cookie-parser"; //stores JWT cookies
 import dotenv from "dotenv";
 import express from "express"
 
+// rate limit
+import rateLimit from "express-rate-limit";
+
 // Db
 import conn from "./db/connection.js";
 
@@ -21,10 +24,18 @@ const app = express();
 
 const PORT = process.env.PORT || 3000; //assigns port to listen to
 
+const limit = rateLimit({ //settings for limiting traffic
+  windowMs: 10 * 60 * 1000, //10 mins
+  max: 5, //5 requests every 10 mins
+});
+
 //Express middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cookieParser(process.env.JWT_SECRET));
+
+app.use(limit); //applies rate-limit to all requests
+
 
 //To make it clear to the consumer that the application is an API, prefix the endpoint with /api
 app.use("/api", auth) 
@@ -44,10 +55,10 @@ const start = async () => {
       console.log(err);  //displays error
     }
   };
+
+start();
   
-  start();
-  
-  export default app;
+export default app;
 
 
 
