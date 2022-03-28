@@ -17,7 +17,9 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "teams:create": "node db/seeder",
+    "teams:delete": "node db/seeder -d"
   },
   "repository": {
     "type": "git",
