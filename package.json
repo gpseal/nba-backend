@@ -19,9 +19,19 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon app.js",
-    "teams:create": "node db/seeder",
-    "teams:delete": "node db/seeder -d"
+    
+    "teams:create": "node db/seeder -createTeams", 
+    "teams:delete": "node db/seeder -deleteTeams",
+
+    "players:create": "node db/seeder -createPlayers", 
+    "players:delete": "node db/seeder -deletePlayers"
   },
+
+  "scriptsComments": {
+    "teams:create": "runs seeder file to upload data"
+  },
+
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/otago-polytechnic-bit-courses/intro-app-dev-2022-project-1-node-js-rest-api-gpseal.git"
