@@ -12,11 +12,11 @@ dotenv.config(); //define and access environment variables
 
 conn(process.env.MONGO_URI); // Connect to MongoDB atlas using connection string in .env file
 
-const create = async (model, data) => {
+const create = async (model, data, string) => {
   try {
-    await Team.deleteMany(); // Delete all documents in the teams collection
-    await Team.insertMany(teams); // Insert documents into the teams collection (objects from teams.js files)
-    console.log("Team data successfully created");
+    await model.deleteMany(); // Delete all documents in the teams collection
+    await model.insertMany(data); // Insert documents into the teams collection (objects from teams.js files)
+    console.log(`${string} data successfully created`);
     process.exit(); // Exit the process
   } catch (err) {
     console.log(err);
@@ -24,9 +24,9 @@ const create = async (model, data) => {
   }
 };
 
-const deleteAll = async (model) => {
+const deleteAll = async (model, string) => {
   try {
-    await Team.deleteMany(); // Delete all documents in the teams collection
+    await model.deleteMany(); // Delete all documents in the teams collection
     console.log("Team data successfully deleted");
     process.exit();
   } catch (err) {
@@ -37,19 +37,19 @@ const deleteAll = async (model) => {
 
 switch (process.argv[2]) { //decides which function to run based on input in terminal.  "npm run teams:create" will enter teams, ""npm run teams:delete"" will delete teams
   case "-deleteTeams": { //add more cases to perform different functions
-    deleteAll(Team);
+    deleteAll(Team, "Teams");
     break;
   }
   case "-createTeams": {
-    create(Team, teams);
+    create(Team, teams, "Teams");
     break;
   }
   case "-deletePlayers": {
-    deleteAll(Player);
+    deleteAll(Player, "Players");
     break;
   }
   case "-createPlayers": {
-    create(Player, players);
+    create(Player, players, "Players");
     break;
   }
   default: {

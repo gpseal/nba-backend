@@ -6,7 +6,7 @@ const playerID_2 = new mongoose.mongo.ObjectId('86cb91bdc3464f14678934ca'); //Bu
 const players = [
     {   
         _id: playerID_1,
-        firstName: "Luka",
+        firstName: "Luka Pt 2",
         lastName: "Doncic",
         position: "Guard",
         age: "23",
