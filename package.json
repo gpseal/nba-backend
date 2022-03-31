@@ -24,7 +24,17 @@
     "teams:delete": "node db/seeder -deleteTeams",
 
     "players:create": "node db/seeder -createPlayers", 
-    "players:delete": "node db/seeder -deletePlayers"
+    "players:delete": "node db/seeder -deletePlayers",
+
+    "coaches:create": "node db/seeder -createCoaches", 
+    "coaches:delete": "node db/seeder -deleteCoaches",
+
+    "playerStats:create": "node db/seeder -createPlayerStats", 
+    "playerStats:delete": "node db/seeder -deletePlayerStats",
+
+    "records:create": "node db/seeder -createRecords", 
+    "records:delete": "node db/seeder -deleteRecords"
+
   },
 
   "scriptsComments": {

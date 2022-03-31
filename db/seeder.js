@@ -6,6 +6,15 @@ import { teams } from "../data/teams.js"; //data to be inserted into database
 import Player from "../models/players.js";
 import { players } from "../data/players.js";
 
+// import Coach from "../models/coaches.js";
+// import { coaches } from "../data/coaches.js"; //data to be inserted into database
+
+// import PlayerStat from "../models/playerStats";
+// import { playerStats } from "../data/playerStats.js";
+
+// import Record from "../models/records";
+// import { records } from "../data/records.js";
+
 import conn from "./connection.js";  //gets connection to database
 
 dotenv.config(); //define and access environment variables
@@ -27,7 +36,7 @@ const create = async (model, data, string) => {
 const deleteAll = async (model, string) => {
   try {
     await model.deleteMany(); // Delete all documents in the teams collection
-    console.log("Team data successfully deleted");
+    console.log(`${string} data successfully deleted`);
     process.exit();
   } catch (err) {
     console.log(err);
@@ -52,7 +61,31 @@ switch (process.argv[2]) { //decides which function to run based on input in ter
     create(Player, players, "Players");
     break;
   }
-  default: {
-    create(Team, teams);
-  }
+  // case "-deleteCoaches": {
+  //   deleteAll(Player, "Players");
+  //   break;
+  // }
+  // case "-createCoaches": {
+  //   create(Player, players, "Players");
+  //   break;
+  // }
+  // case "-deletePlayerStats": {
+  //   deleteAll(Player, "Players");
+  //   break;
+  // }
+  // case "-createPlayerStats": {
+  //   create(Player, players, "Players");
+  //   break;
+  // }
+  // case "-deleteRecords": {
+  //   deleteAll(Player, "Players");
+  //   break;
+  // }
+  // case "-createRecords": {
+  //   create(Player, players, "Players");
+  //   break;
+  // }
+  // default: {
+  //   create(Team, teams, "Teams");
+  // }
 }

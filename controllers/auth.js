@@ -27,7 +27,7 @@ const register = async (req, res) => {
   
       const isPasswordCorrect = await user.comparePassword(password);
       if (!isPasswordCorrect) {  //if password is incorrect
-        return es.status(401).json({ success: false, msg: "Invalid password" });
+        return res.status(401).json({ success: false, msg: "Invalid password" });
       }
   
       const tokenUser = getTokenUserData(user);
