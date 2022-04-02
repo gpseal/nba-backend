@@ -1,10 +1,55 @@
+import console from "console";
 import Player from "../models/players.js";
 import Team from "../models/teams.js";
 
+
 const getPlayers = async (req, res) => {
+  let sortOrder = 1;
+  const type = "sort";
+  let query =req.query;
+  const sortVal = req.query.sort_by;
+
+  if (req.query.order_by == "asc") {
+    sortOrder = -1;
+  }
+
   try {
-    const players = await Player.find({});
-    res.status(200).json({ success: true, data: players });
+
+    let players;
+
+    //sort players by URL query (eg "api/players?sort_by=position&order_by=des")
+    if (query.sort_by != null) {
+      switch (query.sort_by) {
+        case "lastName":
+          players = await Player.find({}).sort({lastName : sortOrder});
+          break;
+        case "position":
+          players = await Player.find({}).sort({position : sortOrder});
+          break;
+        case "age":
+          players = await Player.find({}).sort({age : sortOrder});
+          break;
+        case "team":
+          players = await Player.find({}).sort({team : sortOrder});
+          break;
+        default:
+          players = await Player.find({}).sort({firstName : sortOrder});
+          break;
+      }
+      
+    } 
+    //filter data by URL query (eg "api/players?age=25")
+    else if (query != null) {
+      players = await Player.find(query);
+    }
+
+    //show all data unfiltered or sorted
+    else {
+      players = await Player.find({});
+    }
+
+    res.status(200).json({ success: true, data: players, });
+    
   } catch (err) {
     res.status(500).json({
       msg: err.message || "Something went wrong while getting all players",
