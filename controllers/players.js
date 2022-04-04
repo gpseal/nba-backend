@@ -9,46 +9,63 @@ const getPlayers = async (req, res) => {
   let query =req.query;
   const sortVal = req.query.sort_by;
 
+  const displayData = (dataName) => {res.status(200).json({ success: true, data: dataName, msg: "test"});}
+
   if (req.query.order_by == "asc") {
     sortOrder = -1;
   }
 
   try {
 
-    let players;
+    // let players;
 
     //sort players by URL query (eg "api/players?sort_by=position&order_by=des")
     if (query.sort_by != null) {
       switch (query.sort_by) {
+        case "firstName":
+          {
+          const players = await Player.find({}).sort({firstName : sortOrder});
+          displayData(players);
+          }
         case "lastName":
-          players = await Player.find({}).sort({lastName : sortOrder});
+          {
+          const players = await Player.find({}).sort({lastName : sortOrder});
+          displayData(players);
+          }
           break;
         case "position":
-          players = await Player.find({}).sort({position : sortOrder});
+          {
+            const players = await Player.find({}).sort({position : sortOrder});
+            displayData(players);
+          }
           break;
         case "age":
-          players = await Player.find({}).sort({age : sortOrder});
+          {
+            const players = await Player.find({}).sort({age : sortOrder});
+            displayData(players);
+          }
           break;
         case "team":
-          players = await Player.find({}).sort({team : sortOrder});
+          {
+            const players = await Player.find({}).sort({team : sortOrder});
+            displayData(players);
+          }
           break;
         default:
-          players = await Player.find({}).sort({firstName : sortOrder});
+          res.status(404).json({
+            msg: "Category does not exist"
+          });
           break;
       }
       
     } 
     //filter data by URL query (eg "api/players?age=25")
-    else if (query != null) {
-      players = await Player.find(query);
+    else{
+      const { page = 1, limit = 2, sort = lastName } = req.query;
+      const players = await Player.find(query).limit(limit *1).skip((query.page-1)*limit);
+      displayData(players);
     }
 
-    //show all data unfiltered or sorted
-    else {
-      players = await Player.find({});
-    }
-
-    res.status(200).json({ success: true, data: players, });
     
   } catch (err) {
     res.status(500).json({
