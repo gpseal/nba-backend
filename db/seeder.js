@@ -6,13 +6,13 @@ import { teams } from "../data/teams.js"; //data to be inserted into database
 import Player from "../models/players.js";
 import { players } from "../data/players.js";
 
-// import Coach from "../models/coaches.js";
+import Coach from "../models/coaches.js";
 // import { coaches } from "../data/coaches.js"; //data to be inserted into database
 
-// import PlayerStat from "../models/playerStats";
+import PlayerStat from "../models/playerStats.js";
 // import { playerStats } from "../data/playerStats.js";
 
-// import Record from "../models/records";
+import Record from "../models/records.js";
 // import { records } from "../data/records.js";
 
 import conn from "./connection.js";  //gets connection to database
@@ -21,11 +21,11 @@ dotenv.config(); //define and access environment variables
 
 conn(process.env.MONGO_URI); // Connect to MongoDB atlas using connection string in .env file
 
-const create = async (model, data, string) => {
+const createAll = async (model, data) => {
   try {
     await model.deleteMany(); // Delete all documents in the teams collection
     await model.insertMany(data); // Insert documents into the teams collection (objects from teams.js files)
-    console.log(`${string} data successfully created`);
+    console.log(`data successfully created`);
     process.exit(); // Exit the process
   } catch (err) {
     console.log(err);
@@ -33,10 +33,10 @@ const create = async (model, data, string) => {
   }
 };
 
-const deleteAll = async (model, string) => {
+const deleteAll = async (model) => {
   try {
     await model.deleteMany(); // Delete all documents in the teams collection
-    console.log(`${string} data successfully deleted`);
+    console.log(`data successfully deleted`);
     process.exit();
   } catch (err) {
     console.log(err);
@@ -45,22 +45,27 @@ const deleteAll = async (model, string) => {
 };
 
 switch (process.argv[2]) { //decides which function to run based on input in terminal.  "npm run teams:create" will enter teams, ""npm run teams:delete"" will delete teams
-  case "-deleteTeams": { //add more cases to perform different functions
-    deleteAll(Team, "Teams");
+
+  case "-c": {
+    createAll(Player, players);
+    createAll(Team, teams);
+    // createAll(Coach, coaches, "Coaches");
+    // createAll(Team, teams, "Teams");
+    // createAll(Team, teams, "Teams");
     break;
   }
-  case "-createTeams": {
-    create(Team, teams, "Teams");
+  case "-d": {
+    deleteAll(Player);
+    // deleteAll(Team);
+    // deleteAll(Coach);
+    // deleteAll(PlayerStat);
+    // deleteAll(Record);
     break;
   }
-  case "-deletePlayers": {
-    deleteAll(Player, "Players");
-    break;
-  }
-  case "-createPlayers": {
-    create(Player, players, "Players");
-    break;
-  }
+  // case "-createPlayers": {
+  //   create(Player, players, "Players");
+  //   break;
+  // }
   // case "-deleteCoaches": {
   //   deleteAll(Player, "Players");
   //   break;

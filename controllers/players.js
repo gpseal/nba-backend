@@ -7,7 +7,7 @@ const getPlayers = async (req, res) => {
   let sortOrder = 1;
   const type = "sort";
   let query =req.query;
-  const sortVal = req.query.sort_by;
+  // const sortVal = req.query.sort_by;
 
   const displayData = (dataName) => {res.status(200).json({ success: true, data: dataName, msg: "test"});}
 
@@ -61,11 +61,10 @@ const getPlayers = async (req, res) => {
     } 
     //filter data by URL query (eg "api/players?age=25")
     else{
-      const { page = 1, limit = 2, sort = lastName } = req.query;
-      const players = await Player.find(query).limit(limit *1).skip((query.page-1)*limit);
+      const { page = 1, limit = 2 } = req.query;
+      const players = await Player.find(query).limit(limit).skip((query.page-1)*limit);
       displayData(players);
     }
-
     
   } catch (err) {
     res.status(500).json({

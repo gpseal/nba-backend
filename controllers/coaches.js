@@ -7,10 +7,10 @@ const getCoaches = async (req, res) => {
   try {
     const coaches = await Coach.find({});
 
-    res.status(200).json({ success: true, data: coaches });  //once promise is fulfilled, return success message
+    return res.status(200).json({ success: true, data: coaches });  //once promise is fulfilled, return success message
 
   } catch (err) {
-    res.status(500).json({
+    return res.status(500).json({
       msg: err.message || "Something went wrong while getting all coaches",  //show if promise not fulfilled
     });
   }
@@ -32,7 +32,7 @@ const getCoachID = async (req, res) => {
   
       return res.status(200).json({ success: true, data: coach });
     } catch (err) {
-      res.status(500).json({
+      return res.status(500).json({
         msg: err.message || "Something went wrong while deleting an coach",
       });
     }
@@ -51,9 +51,9 @@ const createCoach = async (req, res) => {
       await team.save();
   
       const newCoaches = await Coach.find({});
-      res.status(201).json({ success: true, data: newCoaches });
+      return res.status(201).json({ success: true, data: newCoaches });
     } catch (err) {
-      res.status(500).json({
+      return res.status(500).json({
         msg: err.message || "Something went wrong while creating a player",
       });
     }
@@ -74,10 +74,10 @@ const updateCoach = async (req, res) => {
       }
   
       const updatedCoach = await Coach.findById(id);
-      res.status(200).json({ success: true, data: updatedCoach });
+      return res.status(200).json({ success: true, data: updatedCoach });
 
     } catch (err) {  //display error if something went wrong
-      res.status(500).json({
+      return res.status(500).json({
         msg: err.message || "Something went wrong while updating an coach",
       });
     }
@@ -99,7 +99,7 @@ const deleteCoach = async (req, res) => {
       const newCoaches = await Coach.find({});
       return res.status(200).json({ success: true, data: newCoaches });
     } catch (err) {
-      res.status(500).json({
+      return res.status(500).json({
         msg: err.message || "Something went wrong while deleting an coach",
       });
     }

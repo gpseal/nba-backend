@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 const playerStatsSchema = new mongoose.Schema({
 
+  
   games: {
     type: Number,
     maxlength: 10,
