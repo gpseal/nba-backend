@@ -23,11 +23,11 @@ conn(process.env.MONGO_URI); // Connect to MongoDB atlas using connection string
 
 // let promises = [];
 
-const createAll = async (model, data) => {
+const createAll = async (model, data, collection) => {
   try {
     await model.deleteMany(); // Delete all documents in the teams collection
-    await model.insertMany(data); // Insert documents into the teams collection (objects from teams.js files)
-    console.log(`data successfully created`);
+    await model.insertMany(data); // Insert documents into the collection (objects from .js files)
+    console.log(`${collection} data successfully created`);
   } catch (err) {
     console.log(err);
     process.exit(1); // Exit the process with an error
@@ -50,13 +50,14 @@ switch (process.argv[2]) { //decides which function to run based on input in ter
 
   case "-c": {
 
-    await createAll(Team, teams);
-    await createAll(Player, players);
-    // await createAll(Coach, coaches);
-    // await createAll(Record, records);
-    // await createAll(PlayerStat, playerStats);
+    await createAll(Team, teams, "teams");
+    await createAll(Player, players, "players");
+    // await createAll(Coach, coaches, "coaches");
+    // await createAll(Record, records, "records");
+    // await createAll(PlayerStat, playerStats, "Player");
     break;
   }
+  
   case "-d": {
     await deleteAll(Team);
     await deleteAll(Player);
