@@ -30,10 +30,10 @@ const playersSchema = new mongoose.Schema({
     ref: "Team",
   },
 
-  playerStats: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "PlayerStat",
-  }
+  // playerStats: {
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: "PlayerStat",
+  // }
 
 });
 

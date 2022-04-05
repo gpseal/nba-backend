@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
 const recordsSchema = new mongoose.Schema({
+
   games: {
     type: Number,
     maxlength: 10,
