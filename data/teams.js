@@ -56,4 +56,4 @@ const teams = [
   },
 ]
 
-export { teams, Mavericks }
+export { teams }
