@@ -1,61 +1,133 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose'
 
-import Team from "../models/teams.js";
+// import Team from '../models/teams.js'
 // import { teams, Mavericks } from "../data/teams.js";
-import * as ID from "../data/data_IDs.js";
+import * as ID from '../data/data_IDs.js'
 
-//TEAM IDs
-//56cb91bdc3464f14678934ca - Mavericks
-
-// const ID_Luka_Doncic = new mongoose.mongo.ObjectId('76cb91bdc3464f14678934ca');
-// const ID_Jalen_Brunson = new mongoose.mongo.ObjectId('624ba37f86c7892cbe5f2532');
-// const ID_Reggie_Bullock = new mongoose.mongo.ObjectId('624ba38c86c7892cbe5f2538');
-// const ID_Dorian_Finney_Smith = new mongoose.mongo.ObjectId('624ba39586c7892cbe5f253d');
-// const ID_Dwight_Powell = new mongoose.mongo.ObjectId('624ba39c86c7892cbe5f2542');
-
-const playerID_2 = new mongoose.mongo.ObjectId('86cb91bdc3464f14678934ca'); //Bulls
 
 const players = [
-    {   
-        _id: ID.Luka_Doncic,
-        firstName: "Luka",
-        lastName: "Doncic",
-        position: "Guard",
-        age: 23,
-        team: ID.Mavericks
-    },
-    {   
-        _id: ID.Jalen_Brunson,
-        firstName: "Jalen",
-        lastName: "Brunson",
-        position: "Shooting Guard",
-        age: 25,
-        team: ID.Mavericks
-    },
-    {   
-        _id: ID.Reggie_Bullock,
-        firstName: "Luka",
-        lastName: "Doncic",
-        position: "Guard",
-        age: 25,
-        team: ID.Mavericks
-    },
-    {   
-        _id: ID.Dorian_Finney_Smith,
-        firstName: "Luka",
-        lastName: "Doncic",
-        position: "Guard",
-        age: 29,
-        team: ID.Mavericks
-    },
-    {   
-        _id: ID.Dwight_Powell,
-        firstName: "Luka",
-        lastName: "Doncic",
-        position: "Guard",
-        age: 27,
-        team: ID.Mavericks
-    }
+  {
+    _id: ID.Luka_Doncic,
+    firstName: 'Luka',
+    lastName: 'Doncic',
+    position: 'Guard',
+    age: 23,
+    team: ID.Mavericks,
+  },
+  {
+    _id: ID.Jalen_Brunson,
+    firstName: 'Jalen',
+    lastName: 'Brunson',
+    position: 'Point Guard',
+    age: 25,
+    team: ID.Mavericks,
+  },
+  {
+    _id: ID.Reggie_Bullock,
+    firstName: 'Reggie',
+    lastName: 'Bullock',
+    position: 'Small Forward',
+    age: 31,
+    team: ID.Mavericks,
+  },
+  {
+    _id: ID.Dorian_Finney_Smith,
+    firstName: 'Dorian',
+    lastName: 'Finney Smith',
+    position: 'Power Forward',
+    age: 28,
+    team: ID.Mavericks,
+  },
+  {
+    _id: ID.Dwight_Powell,
+    firstName: 'Dwight',
+    lastName: 'Powell',
+    position: 'Center',
+    age: 30,
+    team: ID.Mavericks,
+  },
+
+  {
+    _id: ID.Ayo_Dosunmu,
+    firstName: 'Ayo',
+    lastName: 'Dosunmu',
+    position: 'Shooting Guard',
+    age: 23,
+    team: ID.Bulls,
+  },
+  {
+    _id: ID.Alex_Caruso,
+    firstName: 'Alex',
+    lastName: 'Caruso',
+    position: 'Shooting Guard',
+    age: 28,
+    team: ID.Bulls,
+  },
+  {
+    _id: ID.Zach_LaVine,
+    firstName: 'Zach',
+    lastName: 'LaVine',
+    position: 'Shooting Guard',
+    age: 27,
+    team: ID.Bulls,
+  },
+  {
+    _id: ID.DeMar_DeRozan,
+    firstName: 'DeMar',
+    lastName: 'DeRozan',
+    position: 'Small Forward',
+    age: 32,
+    team: ID.Bulls,
+  },
+  {
+    _id: ID.Nikola_Vucevic,
+    firstName: 'Nikola',
+    lastName: 'Vucevic',
+    position: 'Center',
+    age: 31,
+    team: ID.Bulls,
+  },
+
+  {
+    _id: ID.Chris_Paul,
+    firstName: 'Chris',
+    lastName: 'Paul',
+    position: 'Point Guard',
+    age: 36,
+    team: ID.Suns,
+  },
+  {
+    _id: ID.Devin_Booker,
+    firstName: 'Devin',
+    lastName: 'Booker',
+    position: 'Shooting Guard',
+    age: 25,
+    team: ID.Suns,
+  },
+  {
+    _id: ID.Mikal_Bridges,
+    firstName: 'Mikal',
+    lastName: 'Bridges',
+    position: 'Small Forward',
+    age: 25,
+    team: ID.Suns,
+  },
+  {
+    _id: ID.Jae_Crowder,
+    firstName: 'Jae',
+    lastName: 'Crowder',
+    position: 'Power Forward',
+    age: 31,
+    team: ID.Suns,
+  },
+  {
+    _id: ID.Deandre_Ayton,
+    firstName: 'Deandre',
+    lastName: 'Ayton',
+    position: 'Center',
+    age: 23,
+    team: ID.Suns,
+  },
 ]
 
-export { players};
+export { players }

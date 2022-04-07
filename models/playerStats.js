@@ -1,12 +1,11 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose'
 
 const playerStatsSchema = new mongoose.Schema({
-
   games: {
     type: Number,
     maxlength: 10,
   },
-  
+
   ppg: {
     type: Number,
     maxlength: 10,
@@ -24,9 +23,8 @@ const playerStatsSchema = new mongoose.Schema({
 
   player: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Player",
+    ref: 'Player',
   },
-  
-});
+})
 
-export default mongoose.model("PlayerStat", playerStatsSchema);
+export default mongoose.model('PlayerStat', playerStatsSchema)

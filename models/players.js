@@ -1,7 +1,6 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose'
 
 const playersSchema = new mongoose.Schema({
-
   firstName: {
     type: String,
     required: true,
@@ -27,14 +26,13 @@ const playersSchema = new mongoose.Schema({
 
   team: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Team",
+    ref: 'Team',
   },
 
   playerStats: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "PlayerStat",
-  }
+    ref: 'PlayerStat',
+  },
+})
 
-});
-
-export default mongoose.model("Player", playersSchema);
+export default mongoose.model('Player', playersSchema)

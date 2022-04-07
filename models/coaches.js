@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose'
 
 const coachesSchema = new mongoose.Schema({
   firstName: {
@@ -9,33 +9,29 @@ const coachesSchema = new mongoose.Schema({
 
   lastName: {
     type: String,
-    // required: true,
+    required: true,
     maxlength: 50,
   },
-  
+
   age: {
     type: String,
-    // required: true,
     maxlength: 50,
   },
-  
+
   careerWins: {
     type: String,
-    // required: true,
     maxlength: 50,
   },
-  
+
   careerLosses: {
     type: String,
-    // required: true,
     maxlength: 50,
   },
 
   team: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Team",
+    ref: 'Team',
   },
+})
 
-});
-
-export default mongoose.model("Coach", coachesSchema);
+export default mongoose.model('Coach', coachesSchema)

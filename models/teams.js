@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose'
 
 //creates schema definition
 const teamsSchema = new mongoose.Schema({
@@ -34,21 +34,20 @@ const teamsSchema = new mongoose.Schema({
 
   record: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Record",
+    ref: 'Record',
   },
 
   players: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Player",
+      ref: 'Player',
     },
   ],
 
   coach: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Coach",
-  }
+    ref: 'Coach',
+  },
+})
 
-});
-
-export default mongoose.model("Team", teamsSchema); // shape of collection
+export default mongoose.model('Team', teamsSchema) // shape of collection

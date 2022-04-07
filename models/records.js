@@ -1,12 +1,11 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose'
 
 const recordsSchema = new mongoose.Schema({
-
   games: {
     type: Number,
     maxlength: 10,
   },
-  
+
   wins: {
     type: Number,
     maxlength: 10,
@@ -29,9 +28,8 @@ const recordsSchema = new mongoose.Schema({
 
   team: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Team",
+    ref: 'Team',
   },
-  
-});
+})
 
-export default mongoose.model("Record", recordsSchema);
+export default mongoose.model('Record', recordsSchema)

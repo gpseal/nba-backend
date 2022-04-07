@@ -3,11 +3,11 @@ const router = Router() // Create a new router object. This allows to handle var
 
 // Importing the four functions
 import {
-    getTeams,
-    getTeamsID,
-    createTeam,
-    updateTeam,
-    deleteTeam,
+  getTeams,
+  getTeamsID,
+  createTeam,
+  updateTeam,
+  deleteTeam,
 } from '../controllers/teams.js'
 
 // Four routes that are mapped to the functions above

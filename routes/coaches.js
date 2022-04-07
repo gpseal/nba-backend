@@ -3,11 +3,11 @@ const router = Router() // Create a new router object. This allows to handle var
 
 // Importing the four functions
 import {
-    getCoaches,
-    getCoachID,
-    createCoach,
-    updateCoach,
-    deleteCoach,
+  getCoaches,
+  getCoachID,
+  createCoach,
+  updateCoach,
+  deleteCoach,
 } from '../controllers/coaches.js'
 
 // Four routes that are mapped to the functions above

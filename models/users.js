@@ -1,5 +1,5 @@
-import mongoose from "mongoose";
-import bcryptjs from "bcryptjs";
+import mongoose from 'mongoose'
+import bcryptjs from 'bcryptjs'
 
 const usersSchema = new mongoose.Schema({
   name: {
@@ -18,15 +18,16 @@ const usersSchema = new mongoose.Schema({
     required: true,
     minlength: 6,
   },
-});
+})
 
-usersSchema.pre("save", async function () { //before user schema is saved, perform this function
-    const salt = await bcryptjs.genSalt(10); // Asynchronously generates a salt (random characters) - defaults to 10 rounds if omitted
-    this.password = await bcryptjs.hash(this.password, salt); // Asynchronously generates a hash for the given string, i.e., password
-  });
+usersSchema.pre('save', async function () {
+  //before user schema is saved, perform this function
+  const salt = await bcryptjs.genSalt(10) // Asynchronously generates a salt (random characters) - defaults to 10 rounds if omitted
+  this.password = await bcryptjs.hash(this.password, salt) // Asynchronously generates a hash for the given string, i.e., password
+})
 
-  usersSchema.methods.comparePassword = function (password) {
-    return bcryptjs.compare(password, this.password);
-  };
+usersSchema.methods.comparePassword = function (password) {
+  return bcryptjs.compare(password, this.password)
+}
 
-  export default mongoose.model("User", usersSchema);
+export default mongoose.model('User', usersSchema)

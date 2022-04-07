@@ -20,7 +20,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon app.js",
     "records:create": "node db/seeder -c",
-    "records:delete": "node db/seeder -d"
+    "records:delete": "node db/seeder -d",
+    "prettier_all": "npx prettier --write ."
   },
   "scriptsComments": {
     "records:create": "runs seeder file to upload data"
