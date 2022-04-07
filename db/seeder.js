@@ -50,11 +50,11 @@ switch (process.argv[2]) { //decides which function to run based on input in ter
 
   case "-c": {
 
-    await createAll(Team, teams, "teams");
-    await createAll(Player, players, "players");
-    // await createAll(Coach, coaches, "coaches");
-    // await createAll(Record, records, "records");
-    // await createAll(PlayerStat, playerStats, "Player");
+    await createAll(Team, teams, "Teams");
+    await createAll(Player, players, "Players");
+    await createAll(Coach, coaches, "Coaches");
+    await createAll(Record, records, "Records");
+    await createAll(PlayerStat, playerStats, "Player Stats");
     break;
   }
   

@@ -1,15 +1,15 @@
 import mongoose from "mongoose";
 
-const ID_Mavericks_Record = new mongoose.mongo.ObjectId('46cb91bdc8464f14678934ca'); 
+import * as ID from "../data/data_IDs.js";
 
 //TEAM IDs
 //56cb91bdc3464f14678934ca - Mavericks
 
 const records = [
     {   
-        _id: ID_Mavericks_Record,
+        _id: ID.Mavericks_RECORD,
         games: 20,
-        team: "56cb91bdc3464f14678934ca"
+        team: ID.Mavericks
     },
 ]
 

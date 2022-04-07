@@ -19,17 +19,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon app.js",
-    
-    "records:create": "node db/seeder -c", 
+    "records:create": "node db/seeder -c",
     "records:delete": "node db/seeder -d"
-
   },
-
   "scriptsComments": {
     "records:create": "runs seeder file to upload data"
   },
-
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/otago-polytechnic-bit-courses/intro-app-dev-2022-project-1-node-js-rest-api-gpseal.git"
@@ -39,5 +34,8 @@
   "bugs": {
     "url": "https://github.com/otago-polytechnic-bit-courses/intro-app-dev-2022-project-1-node-js-rest-api-gpseal/issues"
   },
-  "homepage": "https://github.com/otago-polytechnic-bit-courses/intro-app-dev-2022-project-1-node-js-rest-api-gpseal#readme"
+  "homepage": "https://github.com/otago-polytechnic-bit-courses/intro-app-dev-2022-project-1-node-js-rest-api-gpseal#readme",
+  "devDependencies": {
+    "prettier": "2.6.2"
+  }
 }
