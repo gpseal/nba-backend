@@ -8,7 +8,7 @@ import rateLimit from 'express-rate-limit'
 // Db
 import conn from './db/connection.js'
 
-//Access all the routes exported from routes/institutions.js
+//Access all the routes exported from routes
 import teams from './routes/teams.js'
 import players from './routes/players.js'
 import coaches from './routes/coaches.js'

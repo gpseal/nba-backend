@@ -2,67 +2,84 @@ import console from 'console'
 import Player from '../models/players.js'
 import Team from '../models/teams.js'
 
+const displayData = (dataName, response) => {
+  //function to display data
+  if (dataName.length === 0) {
+    //display error if empty array is returned
+    return response
+      .status(410)
+      .json({ success: false, msg: 'No content currently available' })
+  } else return response.status(200).json({ success: true, data: dataName })
+}
+
+const errorMsg = (response, err) => {
+  //function to display 500 error message
+  return response.status(500).json({
+    msg: err.message || 'Something went wrong while getting all players'
+  })
+}
+
+const noIDExists = (category, response, id) => {
+  if (!player) {
+    return res.status(404).json({
+      success: false,
+      msg: `No player with the id ${id}`
+    })
+  }
+}
+
 const getPlayers = async (req, res) => {
   let sortOrder = 1
   const type = 'sort'
   let query = req.query
-  // const sortVal = req.query.sort_by;
-
-  const displayData = (dataName) => {
-    if (dataName.length === 0) {
-      return res.status(410).json({ success: false, msg: 'No content currently available' })
-    }
-    else
-    return res.status(200).json({ success: true, data: dataName })
-  }
 
   if (req.query.order_by == 'asc') {
     sortOrder = -1
   }
 
+  // async (displayData) => {}
   try {
     //sort players by URL query (eg "api/players?sort_by=position&order_by=des")
     if (query.sort_by != null) {
       switch (query.sort_by) {
-        case 'firstName': 
-        {
+        case 'firstName': {
           const players = await Player.find({}).sort({ firstName: sortOrder })
-          displayData(players)
-          return;
+          displayData(players, res)
+          return
         }
         case 'lastName':
           {
             const players = await Player.find({}).sort({ lastName: sortOrder })
-            displayData(players)
-            return;
+            displayData(players, res)
+            return
           }
           break
         case 'position':
           {
             const players = await Player.find({}).sort({ position: sortOrder })
-            displayData(players)
-            return;
+            displayData(players, res)
+            return
           }
           break
         case 'age':
           {
             const players = await Player.find({}).sort({ age: sortOrder })
-            displayData(players)
-            return;
+            displayData(players, res)
+            return
           }
           break
         case 'team':
           {
             const players = await Player.find({}).sort({ team: sortOrder })
-            displayData(players)
-            return;
+            displayData(players, res)
+            return
           }
           break
         default:
           res.status(404).json({
             msg: 'Category does not exist'
-          });
-          return;
+          })
+          return
           break
       }
     }
@@ -72,12 +89,13 @@ const getPlayers = async (req, res) => {
       const players = await Player.find(query)
         .limit(limit)
         .skip((query.page - 1) * limit)
-      displayData(players)
+      displayData(players, res)
     }
   } catch (err) {
-    return res.status(500).json({
-      msg: err.message || 'Something went wrong while getting all players'
-    })
+    errorMsg(res, err)
+    // return res.status(500).json({
+    //   msg: err.message || 'Something went wrong while getting all players'
+    // })
   }
 }
 
@@ -92,13 +110,10 @@ const getPlayerID = async (req, res) => {
         msg: `No player with the id ${id}`
       })
     }
-    // displayData(player)
-    return res.status(200).json({ success: true, data: player })
 
+    displayData(player, res)
   } catch (err) {
-    return res.status(500).json({
-      msg: err.message || 'Something went wrong while finding player'
-    })
+    errorMsg(res, err)
   }
 }
 
@@ -113,14 +128,10 @@ const createPlayer = async (req, res) => {
     })
     team.players.push(player)
     await team.save()
-
     const newPlayers = await Player.find({})
-    displayData(newPlayers)
-    // return res.status(201).json({ success: true, data: newPlayers })
+    displayData(newPlayers, res)
   } catch (err) {
-    return res.status(500).json({
-      msg: err.message || 'Something went wrong while creating a player'
-    })
+    errorMsg(res, err)
   }
 }
 
@@ -138,13 +149,10 @@ const updatePlayer = async (req, res) => {
     }
 
     const updatedPlayer = await Player.findById(id)
-    displayData(updatedPlayer)
+    displayData(updatedPlayer, res)
     // return res.status(200).json({ success: true, data: updatedPlayer }) //show updated player
   } catch (err) {
-    //display error if something went wrong
-    return res.status(500).json({
-      msg: err.message || 'Something went wrong while updating player'
-    })
+    errorMsg(res, err)
   }
 }
 
@@ -161,13 +169,11 @@ const deletePlayer = async (req, res) => {
     }
 
     const newPlayers = await Player.find({})
-    
-    displayData(newPlayers)
+
+    displayData(newPlayers, res)
     // return res.status(200).json({ success: true, data: newPlayers })
   } catch (err) {
-    return res.status(500).json({
-      msg: err.message || 'Something went wrong while deleting player'
-    })
+    errorMsg(res, err)
   }
 }
 
