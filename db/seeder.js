@@ -57,11 +57,11 @@ switch (
   }
 
   case '-d': {
-    await deleteAll(Team)
+    // await deleteAll(Team)
     await deleteAll(Player)
-    await deleteAll(Coach)
-    await deleteAll(Record)
-    await deleteAll(PlayerStat)
+    // await deleteAll(Coach)
+    // await deleteAll(Record)
+    // await deleteAll(PlayerStat)
     break
   }
 }

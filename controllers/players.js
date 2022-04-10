@@ -9,6 +9,10 @@ const getPlayers = async (req, res) => {
   // const sortVal = req.query.sort_by;
 
   const displayData = (dataName) => {
+    if (dataName.length === 0) {
+      return res.status(410).json({ success: false, msg: 'No content currently available' })
+    }
+    else
     return res.status(200).json({ success: true, data: dataName })
   }
 
@@ -17,8 +21,6 @@ const getPlayers = async (req, res) => {
   }
 
   try {
-
-    
     //sort players by URL query (eg "api/players?sort_by=position&order_by=des")
     if (query.sort_by != null) {
       switch (query.sort_by) {
