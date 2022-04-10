@@ -16,9 +16,9 @@ const teams = [
       ID.Dorian_Finney_Smith,
       ID.Dwight_Powell,
       ID.Jalen_Brunson,
-      ID.Reggie_Bullock,
+      ID.Reggie_Bullock
     ],
-    coach: ID.Jason_Kidd,
+    coach: ID.Jason_Kidd
   },
   {
     _id: ID.Bulls,
@@ -33,9 +33,9 @@ const teams = [
       ID.Alex_Caruso,
       ID.Zach_LaVine,
       ID.DeMar_DeRozan,
-      ID.Nikola_Vucevic,
+      ID.Nikola_Vucevic
     ],
-    coach: ID.Billy_Donovan,
+    coach: ID.Billy_Donovan
   },
   {
     _id: ID.Suns,
@@ -50,10 +50,10 @@ const teams = [
       ID.Devin_Booker,
       ID.Mikal_Bridges,
       ID.Jae_Crowder,
-      ID.Deandre_Ayton,
+      ID.Deandre_Ayton
     ],
-    coach: ID.Monty_Williams,
-  },
+    coach: ID.Monty_Williams
+  }
 ]
 
 export { teams }

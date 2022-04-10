@@ -7,7 +7,7 @@ import {
   createPlayer,
   updatePlayer,
   getPlayerID,
-  deletePlayer,
+  deletePlayer
 } from '../controllers/players.js'
 
 // Four routes that are mapped to the functions above

@@ -27,7 +27,7 @@ const PORT = process.env.PORT || 3000 //assigns port to listen to
 const limit = rateLimit({
   //settings for limiting traffic
   windowMs: 10 * 60 * 1000, //10 mins
-  max: 5, //5 requests every 10 mins
+  max: 5 //5 requests every 10 mins
 })
 
 //Express middleware
@@ -39,11 +39,19 @@ app.use(cookieParser(process.env.JWT_SECRET))
 
 //To make it clear to the consumer that the application is an API, prefix the endpoint with /api
 app.use('/api', auth)
+// app.use('/api/*', authRoute, coaches)
 app.use('/api/teams', authRoute, teams) //authRoute protects route using middleware (middleware/auth.js)
 app.use('/api/players', authRoute, players)
 app.use('/api/coaches', authRoute, coaches)
 app.use('/api/records', authRoute, records)
 app.use('/api/playerStats', authRoute, playerStats)
+
+// if endpoint does not exist catch 404 and forward to error handler
+app.use((req, res) => {
+  return res.status(404).json({
+    msg: 'Your page was not found'
+  })
+});
 
 //connects to mongo db
 const start = async () => {

@@ -11,7 +11,7 @@ const getTeams = async (req, res) => {
     res.status(200).json({ success: true, data: teams }) //once promise is fulfilled, return success message
   } catch (err) {
     res.status(500).json({
-      msg: err.message || 'Something went wrong while getting all teams', //show if promise not fulfilled
+      msg: err.message || 'Something went wrong while getting all teams' //show if promise not fulfilled
     })
   }
 }
@@ -25,14 +25,14 @@ const getTeamsID = async (req, res) => {
     if (!team) {
       return res.status(404).json({
         success: false,
-        msg: `No team with the id ${id}`,
+        msg: `No team with the id ${id}`
       })
     }
 
     return res.status(200).json({ success: true, data: team })
   } catch (err) {
     res.status(500).json({
-      msg: err.message || 'Something went wrong while deleting an team',
+      msg: err.message || 'Something went wrong while deleting an team'
     })
   }
 }
@@ -47,7 +47,7 @@ const createTeam = async (req, res) => {
     res.status(201).json({ success: true, data: newTeams })
   } catch (err) {
     res.status(500).json({
-      msg: err.message || 'Something went wrong while creating an team',
+      msg: err.message || 'Something went wrong while creating an team'
     })
   }
 }
@@ -62,7 +62,7 @@ const updateTeam = async (req, res) => {
     if (!team) {
       return res.status(404).json({
         success: false,
-        msg: `No team with the id ${id}`,
+        msg: `No team with the id ${id}`
       })
     }
 
@@ -71,7 +71,7 @@ const updateTeam = async (req, res) => {
   } catch (err) {
     //display error if something went wrong
     res.status(500).json({
-      msg: err.message || 'Something went wrong while updating an team',
+      msg: err.message || 'Something went wrong while updating an team'
     })
   }
 }
@@ -85,7 +85,7 @@ const deleteTeam = async (req, res) => {
     if (!team) {
       return res.status(404).json({
         success: false,
-        msg: `No team with the id ${id}`,
+        msg: `No team with the id ${id}`
       })
     }
 
@@ -93,7 +93,7 @@ const deleteTeam = async (req, res) => {
     return res.status(200).json({ success: true, data: newTeams })
   } catch (err) {
     res.status(500).json({
-      msg: err.message || 'Something went wrong while deleting an team',
+      msg: err.message || 'Something went wrong while deleting an team'
     })
   }
 }

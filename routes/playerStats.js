@@ -7,7 +7,7 @@ import {
   getPlayerStatID,
   createPlayerStat,
   updatePlayerStat,
-  deletePlayerStat,
+  deletePlayerStat
 } from '../controllers/playerStats.js'
 
 // Four routes that are mapped to the functions above

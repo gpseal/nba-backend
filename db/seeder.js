@@ -49,10 +49,10 @@ switch (
 ) {
   case '-c': {
     await createAll(Team, teams, 'Teams')
+    await createAll(PlayerStat, playerStats, 'Player Stats')
     await createAll(Player, players, 'Players')
     await createAll(Coach, coaches, 'Coaches')
     await createAll(Record, records, 'Records')
-    await createAll(PlayerStat, playerStats, 'Player Stats')
     break
   }
 

@@ -7,7 +7,7 @@ import {
   getTeamsID,
   createTeam,
   updateTeam,
-  deleteTeam,
+  deleteTeam
 } from '../controllers/teams.js'
 
 // Four routes that are mapped to the functions above

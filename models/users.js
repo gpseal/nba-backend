@@ -6,18 +6,18 @@ const usersSchema = new mongoose.Schema({
     type: String,
     required: true,
     maxlength: 50,
-    minlength: 3,
+    minlength: 3
   },
   email: {
     type: String,
     required: true,
-    unique: true,
+    unique: true
   },
   password: {
     type: String,
     required: true,
-    minlength: 6,
-  },
+    minlength: 6
+  }
 })
 
 usersSchema.pre('save', async function () {

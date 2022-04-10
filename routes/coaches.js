@@ -7,7 +7,7 @@ import {
   getCoachID,
   createCoach,
   updateCoach,
-  deleteCoach,
+  deleteCoach
 } from '../controllers/coaches.js'
 
 // Four routes that are mapped to the functions above

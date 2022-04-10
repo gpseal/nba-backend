@@ -10,7 +10,7 @@ const records = [
     losses: 30,
     confRank: 4,
     gamesBehind: 13.0,
-    team: ID.Mavericks,
+    team: ID.Mavericks
   },
   {
     _id: ID.Bulls_RECORD,
@@ -19,7 +19,7 @@ const records = [
     losses: 35,
     confRank: 6,
     gamesBehind: 7.0,
-    team: ID.Bulls,
+    team: ID.Bulls
   },
   {
     _id: ID.Suns_RECORD,
@@ -28,8 +28,8 @@ const records = [
     losses: 17,
     confRank: 1,
     gamesBehind: 0.0,
-    team: ID.Suns,
-  },
+    team: ID.Suns
+  }
 ]
 
 export { records }

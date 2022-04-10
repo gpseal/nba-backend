@@ -4,35 +4,35 @@ const playersSchema = new mongoose.Schema({
   firstName: {
     type: String,
     required: true,
-    maxlength: 50,
+    maxlength: 50
   },
 
   lastName: {
     type: String,
     required: true,
-    maxlength: 50,
+    maxlength: 50
   },
 
   position: {
     type: String,
     required: true,
-    maxlength: 100,
+    maxlength: 100
   },
 
   age: {
     type: Number,
-    maxlength: 5,
+    maxlength: 5
   },
 
   team: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Team',
+    ref: 'Team'
   },
 
   playerStats: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'PlayerStat',
-  },
+    ref: 'PlayerStat'
+  }
 })
 
 export default mongoose.model('Player', playersSchema)

@@ -8,7 +8,7 @@ const playerStats = [
     ppg: 28.3,
     rpg: 9.1,
     apg: 8.8,
-    player: ID.Luka_Doncic,
+    player: ID.Luka_Doncic
   },
   {
     _id: ID.Jalen_Brunson_STATS,
@@ -16,7 +16,7 @@ const playerStats = [
     ppg: 16.3,
     rpg: 3.9,
     apg: 4.8,
-    player: ID.Jalen_Brunson,
+    player: ID.Jalen_Brunson
   },
   {
     _id: ID.Reggie_Bullock_STATS,
@@ -24,7 +24,7 @@ const playerStats = [
     ppg: 8.7,
     rpg: 3.6,
     apg: 1.2,
-    player: ID.Reggie_Bullock,
+    player: ID.Reggie_Bullock
   },
   {
     _id: ID.Dorian_Finney_Smith_STATS,
@@ -32,7 +32,7 @@ const playerStats = [
     ppg: 10.9,
     rpg: 4.7,
     apg: 1.9,
-    player: ID.Dorian_Finney_Smith,
+    player: ID.Dorian_Finney_Smith
   },
   {
     _id: ID.Dwight_Powell_STATS,
@@ -40,7 +40,7 @@ const playerStats = [
     ppg: 8.6,
     rpg: 4.9,
     apg: 1.2,
-    player: ID.Dwight_Powell,
+    player: ID.Dwight_Powell
   },
 
   {
@@ -49,7 +49,7 @@ const playerStats = [
     ppg: 8.5,
     rpg: 2.8,
     apg: 3.3,
-    player: ID.Ayo_Dosunmu,
+    player: ID.Ayo_Dosunmu
   },
   {
     _id: ID.Alex_Caruso_STATS,
@@ -57,7 +57,7 @@ const playerStats = [
     ppg: 7.4,
     rpg: 3.6,
     apg: 4.0,
-    player: ID.Alex_Caruso,
+    player: ID.Alex_Caruso
   },
   {
     _id: ID.Zach_LaVine_STATS,
@@ -65,7 +65,7 @@ const playerStats = [
     ppg: 24.4,
     rpg: 4.6,
     apg: 4.5,
-    player: ID.Zach_LaVine,
+    player: ID.Zach_LaVine
   },
   {
     _id: ID.DeMar_DeRozan_STATS,
@@ -73,7 +73,7 @@ const playerStats = [
     ppg: 28.0,
     rpg: 5.2,
     apg: 5.0,
-    player: ID.DeMar_DeRozan,
+    player: ID.DeMar_DeRozan
   },
   {
     _id: ID.Nikola_Vucevic_STATS,
@@ -81,7 +81,7 @@ const playerStats = [
     ppg: 17.8,
     rpg: 11.2,
     apg: 3.2,
-    player: ID.Nikola_Vucevic,
+    player: ID.Nikola_Vucevic
   },
 
   {
@@ -90,7 +90,7 @@ const playerStats = [
     ppg: 14.7,
     rpg: 4.3,
     apg: 10.7,
-    player: ID.Chris_Paul,
+    player: ID.Chris_Paul
   },
   {
     _id: ID.Devin_Booker_STATS,
@@ -98,7 +98,7 @@ const playerStats = [
     ppg: 26.7,
     rpg: 5.0,
     apg: 4.9,
-    player: ID.Devin_Booker,
+    player: ID.Devin_Booker
   },
   {
     _id: ID.Mikal_Bridges_STATS,
@@ -106,7 +106,7 @@ const playerStats = [
     ppg: 14.3,
     rpg: 4.3,
     apg: 2.3,
-    player: ID.Mikal_Bridges,
+    player: ID.Mikal_Bridges
   },
   {
     _id: ID.Jae_Crowder_STATS,
@@ -114,7 +114,7 @@ const playerStats = [
     ppg: 9.5,
     rpg: 5.2,
     apg: 1.9,
-    player: ID.Jae_Crowder,
+    player: ID.Jae_Crowder
   },
   {
     _id: ID.Deandre_Ayton_STATS,
@@ -122,8 +122,8 @@ const playerStats = [
     ppg: 17.2,
     rpg: 10.2,
     apg: 1.4,
-    player: ID.Deandre_Ayton,
-  },
+    player: ID.Deandre_Ayton
+  }
 ]
 
 export { playerStats }

@@ -7,7 +7,7 @@ import {
   getRecordID,
   createRecord,
   updateRecord,
-  deleteRecord,
+  deleteRecord
 } from '../controllers/records.js'
 
 // Four routes that are mapped to the functions above

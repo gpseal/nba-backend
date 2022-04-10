@@ -10,7 +10,7 @@ const register = async (req, res) => {
     return res.status(201).json({ success: true, data: tokenUser })
   } catch (err) {
     return res.status(500).json({
-      msg: err.message || 'Something went wrong while registering a user',
+      msg: err.message || 'Something went wrong while registering a user'
     })
   }
 }
@@ -37,7 +37,7 @@ const login = async (req, res) => {
     return res.status(201).json({ success: true, data: tokenUser })
   } catch (err) {
     return res.status(500).json({
-      msg: err.message || 'Something went wrong while logging in a user',
+      msg: err.message || 'Something went wrong while logging in a user'
     })
   }
 }
@@ -46,7 +46,7 @@ const login = async (req, res) => {
 const logout = async (req, res) => {
   res.cookie('token', '', {
     httpOnly: true,
-    expires: new Date(Date.now() + 1000), // 1000 milliseconds = 1 second
+    expires: new Date(Date.now() + 1000) // 1000 milliseconds = 1 second
   })
   return res.status(200).json({ success: true, msg: 'Logged out' })
 }

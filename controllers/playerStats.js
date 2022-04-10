@@ -8,7 +8,7 @@ const getPlayerStats = async (req, res) => {
     res.status(200).json({ success: true, data: playerStats }) //once promise is fulfilled, return success message
   } catch (err) {
     res.status(500).json({
-      msg: err.message || 'Something went wrong while getting all playerStats', //show if promise not fulfilled
+      msg: err.message || 'Something went wrong while getting all playerStats' //show if promise not fulfilled
     })
   }
 }
@@ -21,14 +21,14 @@ const getPlayerStatID = async (req, res) => {
     if (!playerStat) {
       return res.status(404).json({
         success: false,
-        msg: `No playerStat with the id ${id}`,
+        msg: `No playerStat with the id ${id}`
       })
     }
 
     return res.status(200).json({ success: true, data: playerStat })
   } catch (err) {
     res.status(500).json({
-      msg: err.message || 'Something went wrong while deleting an playerStat',
+      msg: err.message || 'Something went wrong while deleting an playerStat'
     })
   }
 }
@@ -40,7 +40,7 @@ const createPlayerStat = async (req, res) => {
 
     // Find a player by its id, then add playerStat
     const player = await Player.findById({
-      _id: playerStat.player,
+      _id: playerStat.player
     })
 
     player.playerStats = playerStat
@@ -58,7 +58,7 @@ const createPlayerStat = async (req, res) => {
     res.status(201).json({ success: true, data: newPlayerStats })
   } catch (err) {
     res.status(500).json({
-      msg: err.message || 'Something went wrong while creating a player',
+      msg: err.message || 'Something went wrong while creating a player'
     })
   }
 }
@@ -72,7 +72,7 @@ const updatePlayerStat = async (req, res) => {
     if (!playerStat) {
       return res.status(404).json({
         success: false,
-        msg: `No playerStat with the id ${id}`,
+        msg: `No playerStat with the id ${id}`
       })
     }
 
@@ -81,7 +81,7 @@ const updatePlayerStat = async (req, res) => {
   } catch (err) {
     //display error if something went wrong
     res.status(500).json({
-      msg: err.message || 'Something went wrong while updating an playerStat',
+      msg: err.message || 'Something went wrong while updating an playerStat'
     })
   }
 }
@@ -94,7 +94,7 @@ const deletePlayerStat = async (req, res) => {
     if (!playerStat) {
       return res.status(404).json({
         success: false,
-        msg: `No playerStat with the id ${id}`,
+        msg: `No playerStat with the id ${id}`
       })
     }
 
@@ -102,7 +102,7 @@ const deletePlayerStat = async (req, res) => {
     return res.status(200).json({ success: true, data: newPlayerStats })
   } catch (err) {
     res.status(500).json({
-      msg: err.message || 'Something went wrong while deleting an playerStat',
+      msg: err.message || 'Something went wrong while deleting an playerStat'
     })
   }
 }
@@ -112,5 +112,5 @@ export {
   getPlayerStatID,
   createPlayerStat,
   updatePlayerStat,
-  deletePlayerStat,
+  deletePlayerStat
 }

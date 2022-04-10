@@ -71,37 +71,37 @@ export const Nikola_Vucevic_STATS = new mongoose.mongo.ObjectId(
 
 //Suns
 export const Chris_Paul = new mongoose.mongo.ObjectId(
-    '624ea9cddfc59da3c463a1e7'
-  )
-  export const Devin_Booker = new mongoose.mongo.ObjectId(
-    '624ea9d3c04e1518cf394e97'
-  )
-  export const Mikal_Bridges = new mongoose.mongo.ObjectId(
-    '624ea9d8412ed74699f71074'
-  )
-  export const Jae_Crowder = new mongoose.mongo.ObjectId(
-    '624ea9dc9f10a88dbd5f713a'
-  )
-  export const Deandre_Ayton = new mongoose.mongo.ObjectId(
-    '624ea9e0579fe366b40330ae'
-  )
+  '624ea9cddfc59da3c463a1e7'
+)
+export const Devin_Booker = new mongoose.mongo.ObjectId(
+  '624ea9d3c04e1518cf394e97'
+)
+export const Mikal_Bridges = new mongoose.mongo.ObjectId(
+  '624ea9d8412ed74699f71074'
+)
+export const Jae_Crowder = new mongoose.mongo.ObjectId(
+  '624ea9dc9f10a88dbd5f713a'
+)
+export const Deandre_Ayton = new mongoose.mongo.ObjectId(
+  '624ea9e0579fe366b40330ae'
+)
 
 //Suns Stats
 export const Chris_Paul_STATS = new mongoose.mongo.ObjectId(
-    '624ea9fd7a80c352d15f2be0'
-  )
-  export const Devin_Booker_STATS = new mongoose.mongo.ObjectId(
-    '624eaa0500dac3133b559bbd'
-  )
-  export const Mikal_Bridges_STATS = new mongoose.mongo.ObjectId(
-    '624eaa09487abdc50de05110'
-  )
-  export const Jae_Crowder_STATS = new mongoose.mongo.ObjectId(
-    '624eaa0ef18dbbdc676640de'
-  )
-  export const Deandre_Ayton_STATS = new mongoose.mongo.ObjectId(
-    '624eaa12b74b2865ac29b58b'
-  )
+  '624ea9fd7a80c352d15f2be0'
+)
+export const Devin_Booker_STATS = new mongoose.mongo.ObjectId(
+  '624eaa0500dac3133b559bbd'
+)
+export const Mikal_Bridges_STATS = new mongoose.mongo.ObjectId(
+  '624eaa09487abdc50de05110'
+)
+export const Jae_Crowder_STATS = new mongoose.mongo.ObjectId(
+  '624eaa0ef18dbbdc676640de'
+)
+export const Deandre_Ayton_STATS = new mongoose.mongo.ObjectId(
+  '624eaa12b74b2865ac29b58b'
+)
 
 //Coaches
 export const Jason_Kidd = new mongoose.mongo.ObjectId(

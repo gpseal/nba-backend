@@ -8,7 +8,7 @@ const createJWT = ({ payload }) => {
   //pass in payload of data
   const token = jwt.sign(payload, process.env.JWT_SECRET, {
     //generate and sign token (pass in payload of data, plus password from .env file)
-    expiresIn: process.env.JWT_LIFETIME, // .env file specifies when token expires (1hr)
+    expiresIn: process.env.JWT_LIFETIME // .env file specifies when token expires (1hr)
   })
   return token
 }
@@ -24,7 +24,7 @@ const attachCookiesToResponse = ({ res, user }) => {
     httpOnly: true,
     expires: new Date(Date.now() + oneDay),
     secure: process.env.NODE_ENV === 'production',
-    signed: true,
+    signed: true
   })
 }
 

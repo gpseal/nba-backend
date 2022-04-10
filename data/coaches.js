@@ -10,7 +10,7 @@ const coaches = [
     age: 49,
     careerWins: 245,
     careerLosses: 222,
-    team: ID.Mavericks,
+    team: ID.Mavericks
   },
   {
     _id: ID.Billy_Donovan,
@@ -19,7 +19,7 @@ const coaches = [
     age: 56,
     careerWins: 120,
     careerLosses: 104,
-    team: ID.Bulls,
+    team: ID.Bulls
   },
   {
     _id: ID.Monty_Williams,
@@ -28,8 +28,15 @@ const coaches = [
     age: 50,
     careerWins: 324,
     careerLosses: 299,
-    team: ID.Suns,
+    team: ID.Suns
   },
+  {
+    firstName: 'Craig',
+    lastName: 'Williams',
+    age: 52,
+    careerWins: 324,
+    careerLosses: 299,
+  }
 ]
 
 export { coaches }
