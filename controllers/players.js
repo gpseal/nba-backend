@@ -19,6 +19,13 @@ const errorMsg = (response, err) => {
   })
 }
 
+const noID = (response, id) => {
+  return response.status(404).json({
+    success: false,
+    msg: `No player with the id ${id}`
+  })
+}
+
 const getPlayers = async (req, res) => {
   let sortOrder = 1
   let query = req.query
@@ -91,10 +98,7 @@ const getPlayerID = async (req, res) => {
     const player = await Player.findById(id)
 
     if (!player) {
-      return res.status(404).json({
-        success: false,
-        msg: `No player with the id ${id}`
-      })
+      return noID(res, id)
     }
 
     displayData(player, res)
@@ -112,10 +116,11 @@ const createPlayer = async (req, res) => {
     const team = await Team.findById({
       _id: player.team
     })
-    
+
     team.players.push(player)
     await team.save()
     const newPlayers = await Player.find({})
+    
     displayData(newPlayers, res)
   } catch (err) {
     errorMsg(res, err)
@@ -130,14 +135,10 @@ const updatePlayer = async (req, res) => {
 
     // Check if player does exist, return fail message if not
     if (!player) {
-      return res.status(404).json({
-        success: false,
-        msg: `No player with the id ${id}`
-      })
+      return noID(res, id)
     }
 
     displayData(updatedPlayer, res)
-    // return res.status(200).json({ success: true, data: updatedPlayer }) //show updated player
   } catch (err) {
     errorMsg(res, err)
   }
@@ -150,13 +151,10 @@ const deletePlayer = async (req, res) => {
     const newPlayers = await Player.find({})
 
     if (!player) {
-      return res.status(404).json({
-        success: false,
-        msg: `No player with the id ${id}`
-      })
+      return noID(res, id)
     }
+
     displayData(newPlayers, res)
-    // return res.status(200).json({ success: true, data: newPlayers })
   } catch (err) {
     errorMsg(res, err)
   }
