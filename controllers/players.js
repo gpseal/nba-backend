@@ -1,4 +1,3 @@
-import console from 'console'
 import Player from '../models/players.js'
 import Team from '../models/teams.js'
 
@@ -27,11 +26,11 @@ const noID = (response, id) => {
 }
 
 const getPlayers = async (req, res) => {
-  let sortOrder = 1
+  let sortOrder = -1
   let query = req.query
 
   if (req.query.order_by == 'asc') {
-    sortOrder = -1
+    sortOrder = 1
   }
 
   try {
@@ -120,7 +119,7 @@ const createPlayer = async (req, res) => {
     team.players.push(player)
     await team.save()
     const newPlayers = await Player.find({})
-    
+
     displayData(newPlayers, res)
   } catch (err) {
     errorMsg(res, err)
