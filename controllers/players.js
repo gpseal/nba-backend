@@ -19,25 +19,14 @@ const errorMsg = (response, err) => {
   })
 }
 
-const noIDExists = (category, response, id) => {
-  if (!player) {
-    return res.status(404).json({
-      success: false,
-      msg: `No player with the id ${id}`
-    })
-  }
-}
-
 const getPlayers = async (req, res) => {
   let sortOrder = 1
-  const type = 'sort'
   let query = req.query
 
   if (req.query.order_by == 'asc') {
     sortOrder = -1
   }
 
-  // async (displayData) => {}
   try {
     //sort players by URL query (eg "api/players?sort_by=position&order_by=des")
     if (query.sort_by != null) {
@@ -85,17 +74,14 @@ const getPlayers = async (req, res) => {
     }
     //filter data by URL query (eg "api/players?age=25")
     else {
-      const { page = 1, limit = 5 } = req.query
-      const players = await Player.find(query)
-        .limit(limit)
-        .skip((query.page - 1) * limit)
+      const { limit = 5 } = req.query //sets defaults of page limit
+      const players = await Player.find(query) //display items that match query search
+        .limit(limit) //sets limit to be displayed
+        .skip((query.page - 1) * limit) //sets page to be displayed
       displayData(players, res)
     }
   } catch (err) {
     errorMsg(res, err)
-    // return res.status(500).json({
-    //   msg: err.message || 'Something went wrong while getting all players'
-    // })
   }
 }
 
@@ -126,6 +112,7 @@ const createPlayer = async (req, res) => {
     const team = await Team.findById({
       _id: player.team
     })
+    
     team.players.push(player)
     await team.save()
     const newPlayers = await Player.find({})
@@ -139,6 +126,7 @@ const updatePlayer = async (req, res) => {
   try {
     const { id } = req.params
     const player = await Player.findByIdAndUpdate(id, req.body) //find section to update
+    const updatedPlayer = await Player.findById(id)
 
     // Check if player does exist, return fail message if not
     if (!player) {
@@ -148,7 +136,6 @@ const updatePlayer = async (req, res) => {
       })
     }
 
-    const updatedPlayer = await Player.findById(id)
     displayData(updatedPlayer, res)
     // return res.status(200).json({ success: true, data: updatedPlayer }) //show updated player
   } catch (err) {
@@ -160,6 +147,7 @@ const deletePlayer = async (req, res) => {
   try {
     const { id } = req.params
     const player = await Player.findByIdAndRemove(id)
+    const newPlayers = await Player.find({})
 
     if (!player) {
       return res.status(404).json({
@@ -167,9 +155,6 @@ const deletePlayer = async (req, res) => {
         msg: `No player with the id ${id}`
       })
     }
-
-    const newPlayers = await Player.find({})
-
     displayData(newPlayers, res)
     // return res.status(200).json({ success: true, data: newPlayers })
   } catch (err) {

@@ -38,13 +38,13 @@ app.use(cookieParser(process.env.JWT_SECRET))
 // app.use(limit); //applies rate-limit to all requests
 
 //To make it clear to the consumer that the application is an API, prefix the endpoint with /api
-app.use('/api', auth)
+app.use('/api/v1', auth)
 // app.use('/api/*', authRoute, coaches)
-app.use('/api/teams', authRoute, teams) //authRoute protects route using middleware (middleware/auth.js)
-app.use('/api/players', authRoute, players)
-app.use('/api/coaches', authRoute, coaches)
-app.use('/api/records', authRoute, records)
-app.use('/api/playerStats', authRoute, playerStats)
+app.use('/api/v1/teams', authRoute, teams) //authRoute protects route using middleware (middleware/auth.js)
+app.use('/api/v1/players', authRoute, players)
+app.use('/api/v1/coaches', authRoute, coaches)
+app.use('/api/v1/records', authRoute, records)
+app.use('/api/v1/playerStats', authRoute, playerStats)
 
 // if endpoint does not exist catch 404 and forward to error handler
 app.use((req, res) => {
