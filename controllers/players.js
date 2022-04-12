@@ -14,7 +14,7 @@ const displayData = (dataName, response) => {
 //function to display 500 error message
 const errorMsg = (response, err) => {
   return response.status(500).json({
-    msg: err.message || 'Something went wrong while getting all players'
+    msg: err.message || 'Something went wrong with player data'
   })
 }
 
@@ -37,7 +37,7 @@ const getPlayers = async (req, res) => {
   }
 
   try {
-    //sort players by URL query (eg "api/players?sort_by=position&order_by=des")
+    //sort players by URL query (eg "api/v1/players?sort_by=position&order_by=des")
     if (query.sort_by != null) {
       switch (query.sort_by) {
         case 'firstName': {
@@ -81,7 +81,7 @@ const getPlayers = async (req, res) => {
           break
       }
     }
-    //filter data by URL query (eg "api/players?age=25")
+    //filter data by URL query (eg "api/v1/players?age=25")
     else {
       const { limit = 5 } = req.query //sets defaults of page limit
       const players = await Player.find(query) //display items that match query search
