@@ -7,14 +7,14 @@ const displayData = (dataName, response) => {
     //display error if empty array is returned
     return response
       .status(410)
-      .json({ success: false, msg: 'No content currently available' })
+      .json({ success: false, msg: 'No content available' })
   } else return response.status(200).json({ success: true, data: dataName })
 }
 
 const errorMsg = (response, err) => {
   //function to display 500 error message
   return response.status(500).json({
-    msg: err.message || 'Something went wrong while getting all records'
+    msg: err.message || 'Something went wrong with record data'
   })
 }
 
@@ -34,60 +34,53 @@ const getRecords = async (req, res) => {
   }
 
   try {
-    //sort records by URL query (eg "api/records?sort_by=position&order_by=des")
+    //sort records by URL query (eg "api/v1/records?sort_by=position&order_by=des")
     if (query.sort_by != null) {
       switch (query.sort_by) {
-        case 'firstName': {
-          const records = await Record.find({}).sort({ firstName: sortOrder })
+        case 'games': {
+          const records = await Record.find({}).sort({ games: sortOrder })
           displayData(records, res)
           return
         }
-        case 'lastName':
+        case 'wins':
           {
-            const records = await Record.find({}).sort({ lastName: sortOrder })
+            const records = await Record.find({}).sort({ wins: sortOrder })
             displayData(records, res)
             return
           }
           break
-        case 'age':
+        case 'losses':
           {
-            const records = await Record.find({}).sort({ age: sortOrder })
+            const records = await Record.find({}).sort({ losses: sortOrder })
             displayData(records, res)
             return
           }
           break
-        case 'careerWins':
+        case 'confRank':
           {
-            const records = await Record.find({}).sort({ careerWins: sortOrder })
+            const records = await Record.find({}).sort({ confRank: sortOrder })
             displayData(records, res)
             return
           }
           break
-        case 'careerLosses':
+        case 'gamesBehind':
           {
             const records = await Record.find({}).sort({
-              careerLosses: sortOrder
+              gamesBehind: sortOrder
             })
-            displayData(records, res)
-            return
-          }
-          break
-        case 'team':
-          {
-            const records = await Record.find({}).sort({ team: sortOrder })
             displayData(records, res)
             return
           }
           break
         default:
           res.status(404).json({
-            msg: 'Category does not exist'
+            msg: 'Category / sort type does not exist'
           })
           return
           break
       }
     }
-    //filter data by URL query (eg "api/records?age=25")
+    //filter data by URL query (eg "api/v1/records?age=25")
     else {
       const { limit = 5 } = req.query //sets defaults of page limit
       const records = await Record.find(query) //display items that match query search
@@ -120,14 +113,12 @@ const createRecord = async (req, res) => {
     const record = new Record(req.body)
     await record.save()
 
-    // Find a team by its id, then push the created record to its list of records.
+    // Find a team by its id, then add created record to team
     const team = await Team.findById({
       _id: record.team
     })
     team.record = record
-
     await team.save()
-
     const newRecords = await Record.find({})
 
     displayData(newRecords, res)

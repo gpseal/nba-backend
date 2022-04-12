@@ -8,7 +8,7 @@ const displayData = (dataName, response) => {
     //display error if empty array is returned
     return response
       .status(410)
-      .json({ success: false, msg: 'No content currently available' })
+      .json({ success: false, msg: 'No content available' })
   } else return response.status(200).json({ success: true, data: dataName })
 }
 
@@ -75,7 +75,7 @@ const getTeams = async (req, res) => {
           break
         default:
           res.status(404).json({
-            msg: 'Category does not exist'
+            msg: 'Category / sort type does not exist'
           })
           return
           break
@@ -116,11 +116,9 @@ const createTeam = async (req, res) => {
 
     const newTeams = await Team.find({})
 
-    res.status(201).json({ success: true, data: newTeams })
+    displayData(newTeams, res)
   } catch (err) {
-    res.status(500).json({
-      msg: err.message || 'Something went wrong while creating an team'
-    })
+    errorMsg(res, err)
   }
 }
 

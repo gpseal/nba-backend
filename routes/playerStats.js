@@ -4,7 +4,7 @@ const router = Router() // Create a new router object. This allows to handle var
 // Importing the four functions
 import {
   getPlayerStats,
-  getPlayerStatID,
+  getPlayerStatByID,
   createPlayerStat,
   updatePlayerStat,
   deletePlayerStat
@@ -15,7 +15,7 @@ router.route('/').get(getPlayerStats).post(createPlayerStat)
 router
   .route('/:id')
   .put(updatePlayerStat)
-  .get(getPlayerStatID)
+  .get(getPlayerStatByID)
   .delete(deletePlayerStat)
 
 export default router // You do not need to enclose router in curly braces

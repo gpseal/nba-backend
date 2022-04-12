@@ -7,7 +7,7 @@ const displayData = (dataName, response) => {
     //display error if empty array is returned
     return response
       .status(410)
-      .json({ success: false, msg: 'No content currently available' })
+      .json({ success: false, msg: 'No content available' })
   } else return response.status(200).json({ success: true, data: dataName })
 }
 
@@ -75,7 +75,7 @@ const getPlayers = async (req, res) => {
           break
         default:
           res.status(404).json({
-            msg: 'Category does not exist'
+            msg: 'Category / sort type does not exist'
           })
           return
           break
