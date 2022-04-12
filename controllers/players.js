@@ -1,8 +1,8 @@
 import Player from '../models/players.js'
 import Team from '../models/teams.js'
 
+//function to display data
 const displayData = (dataName, response) => {
-  //function to display data
   if (dataName.length === 0) {
     //display error if empty array is returned
     return response
@@ -11,13 +11,14 @@ const displayData = (dataName, response) => {
   } else return response.status(200).json({ success: true, data: dataName })
 }
 
+//function to display 500 error message
 const errorMsg = (response, err) => {
-  //function to display 500 error message
   return response.status(500).json({
     msg: err.message || 'Something went wrong while getting all players'
   })
 }
 
+//Function to display no existing data message
 const noID = (response, id) => {
   return response.status(404).json({
     success: false,
@@ -25,10 +26,12 @@ const noID = (response, id) => {
   })
 }
 
+//SHOW ALL PLAYERS
 const getPlayers = async (req, res) => {
   let sortOrder = -1
   let query = req.query
 
+  //set sorting order
   if (req.query.order_by == 'asc') {
     sortOrder = 1
   }
@@ -91,21 +94,24 @@ const getPlayers = async (req, res) => {
   }
 }
 
+//GET PLAYER BY ID
 const getPlayerID = async (req, res) => {
   try {
-    const { id } = req.params
-    const player = await Player.findById(id)
+    const { id } = req.params //get id from request
+    const player = await Player.findById(id) //find player with matching ID
 
     if (!player) {
+      //if player doesn't exist
       return noID(res, id)
     }
 
-    displayData(player, res)
+    displayData(player, res) //display player record
   } catch (err) {
     errorMsg(res, err)
   }
 }
 
+//CREATE NEW PLAYER
 const createPlayer = async (req, res) => {
   try {
     const player = new Player(req.body)
@@ -126,6 +132,7 @@ const createPlayer = async (req, res) => {
   }
 }
 
+//UPDATE EXISTING PLAYER
 const updatePlayer = async (req, res) => {
   try {
     const { id } = req.params
@@ -143,6 +150,7 @@ const updatePlayer = async (req, res) => {
   }
 }
 
+//DELETE PLAYER
 const deletePlayer = async (req, res) => {
   try {
     const { id } = req.params

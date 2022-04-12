@@ -44,13 +44,6 @@ const createRecord = async (req, res) => {
     })
     team.record = record
 
-    // if (record) {
-    //   return res.status(404).json({
-    //     success: false,
-    //     msg: `Record for this team already exists, please update existing record`,
-    //   });
-    // }
-
     await team.save()
 
     const newRecords = await Record.find({})

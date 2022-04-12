@@ -124,9 +124,10 @@ const createCoach = async (req, res) => {
     const team = await Team.findById({
       _id: coach.team
     })
+    team.coach = coach
 
-    team.coaches.push(coach)
     await team.save()
+
     const newCoaches = await Coach.find({})
 
     displayData(newCoaches, res)
