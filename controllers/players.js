@@ -95,7 +95,7 @@ const getPlayers = async (req, res) => {
 }
 
 //GET PLAYER BY ID
-const getPlayerID = async (req, res) => {
+const getPlayerByID = async (req, res) => {
   try {
     const { id } = req.params //get id from request
     const player = await Player.findById(id) //find player with matching ID
@@ -167,4 +167,4 @@ const deletePlayer = async (req, res) => {
   }
 }
 
-export { getPlayers, createPlayer, updatePlayer, getPlayerID, deletePlayer }
+export { getPlayers, createPlayer, updatePlayer, getPlayerByID, deletePlayer }

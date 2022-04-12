@@ -100,7 +100,7 @@ const getCoaches = async (req, res) => {
   }
 }
 
-const getCoachID = async (req, res) => {
+const getCoachByID = async (req, res) => {
   try {
     const { id } = req.params
     const coach = await Coach.findById(id)
@@ -169,4 +169,4 @@ const deleteCoach = async (req, res) => {
   }
 }
 
-export { getCoaches, createCoach, updateCoach, getCoachID, deleteCoach }
+export { getCoaches, createCoach, updateCoach, getCoachByID, deleteCoach }
