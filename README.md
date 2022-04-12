@@ -6,4 +6,4 @@ cvb
 To run locally:
 - Clone repository to local PC
 - Install dependencies: npm install
-- add .env file
+- add .env file to root directory
