@@ -1,3 +1,18 @@
+/**
+ * Author: Greg Seal
+ * Date: April 2022
+ * Course:  Introduction to app development
+ *
+ * For manipulating data within the Coaches collection.
+ * Required functions are exported to the coaches.js file and perform the following tasks:
+ *
+ * getCoaches: requests all coach data for display, can be filtered, paginated and sorted depending on URL query
+ * createCoach: Adds new record to coaches collection
+ * updateCoach: Updates specified existing record in collection
+ * getCoachByID: Displays specified coach record
+ * deleteCoach:  Deletes specified coach record
+ */
+
 import Coach from '../models/coaches.js'
 import Team from '../models/teams.js'
 
@@ -87,7 +102,7 @@ const getCoaches = async (req, res) => {
           break
       }
     }
-    //filter data by URL query (eg "api/coaches?age=25")
+    // filter data by URL query (eg "api/coaches?age=25")
     else {
       const { limit = 5 } = req.query //sets defaults of page limit
       const coaches = await Coach.find(query) //display items that match query search
