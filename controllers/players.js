@@ -1,24 +1,24 @@
-import console from 'console'
 import Player from '../models/players.js'
 import Team from '../models/teams.js'
 
+//function to display data
 const displayData = (dataName, response) => {
-  //function to display data
   if (dataName.length === 0) {
     //display error if empty array is returned
     return response
       .status(410)
-      .json({ success: false, msg: 'No content currently available' })
+      .json({ success: false, msg: 'No content available' })
   } else return response.status(200).json({ success: true, data: dataName })
 }
 
+//function to display 500 error message
 const errorMsg = (response, err) => {
-  //function to display 500 error message
   return response.status(500).json({
-    msg: err.message || 'Something went wrong while getting all players'
+    msg: err.message || 'Something went wrong with player data'
   })
 }
 
+//Function to display no existing data message
 const noID = (response, id) => {
   return response.status(404).json({
     success: false,
@@ -26,16 +26,18 @@ const noID = (response, id) => {
   })
 }
 
+//SHOW ALL PLAYERS
 const getPlayers = async (req, res) => {
-  let sortOrder = 1
+  let sortOrder = -1
   let query = req.query
 
+  //set sorting order
   if (req.query.order_by == 'asc') {
-    sortOrder = -1
+    sortOrder = 1
   }
 
   try {
-    //sort players by URL query (eg "api/players?sort_by=position&order_by=des")
+    //sort players by URL query (eg "api/v1/players?sort_by=position&order_by=des")
     if (query.sort_by != null) {
       switch (query.sort_by) {
         case 'firstName': {
@@ -73,13 +75,13 @@ const getPlayers = async (req, res) => {
           break
         default:
           res.status(404).json({
-            msg: 'Category does not exist'
+            msg: 'Category / sort type does not exist'
           })
           return
           break
       }
     }
-    //filter data by URL query (eg "api/players?age=25")
+    //filter data by URL query (eg "api/v1/players?age=25")
     else {
       const { limit = 5 } = req.query //sets defaults of page limit
       const players = await Player.find(query) //display items that match query search
@@ -92,21 +94,24 @@ const getPlayers = async (req, res) => {
   }
 }
 
-const getPlayerID = async (req, res) => {
+//GET PLAYER BY ID
+const getPlayerByID = async (req, res) => {
   try {
-    const { id } = req.params
-    const player = await Player.findById(id)
+    const { id } = req.params //get id from request
+    const player = await Player.findById(id) //find player with matching ID
 
     if (!player) {
+      //if player doesn't exist
       return noID(res, id)
     }
 
-    displayData(player, res)
+    displayData(player, res) //display player record
   } catch (err) {
     errorMsg(res, err)
   }
 }
 
+//CREATE NEW PLAYER
 const createPlayer = async (req, res) => {
   try {
     const player = new Player(req.body)
@@ -120,13 +125,14 @@ const createPlayer = async (req, res) => {
     team.players.push(player)
     await team.save()
     const newPlayers = await Player.find({})
-    
+
     displayData(newPlayers, res)
   } catch (err) {
     errorMsg(res, err)
   }
 }
 
+//UPDATE EXISTING PLAYER
 const updatePlayer = async (req, res) => {
   try {
     const { id } = req.params
@@ -144,6 +150,7 @@ const updatePlayer = async (req, res) => {
   }
 }
 
+//DELETE PLAYER
 const deletePlayer = async (req, res) => {
   try {
     const { id } = req.params
@@ -160,4 +167,4 @@ const deletePlayer = async (req, res) => {
   }
 }
 
-export { getPlayers, createPlayer, updatePlayer, getPlayerID, deletePlayer }
+export { getPlayers, createPlayer, updatePlayer, getPlayerByID, deletePlayer }

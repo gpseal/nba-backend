@@ -1,6 +1,7 @@
 import cookieParser from 'cookie-parser' //stores JWT cookies
 import dotenv from 'dotenv'
 import express from 'express'
+import helmet from 'helmet'
 
 // rate limit
 import rateLimit from 'express-rate-limit'
@@ -18,9 +19,13 @@ import auth from './routes/auth.js'
 
 import authRoute from './middleware/auth.js' //import middleware, for checking authentication
 
+const version = "v1";
+
 dotenv.config()
 
 const app = express()
+
+app.use(helmet());
 
 const PORT = process.env.PORT || 3000 //assigns port to listen to
 
@@ -38,13 +43,13 @@ app.use(cookieParser(process.env.JWT_SECRET))
 // app.use(limit); //applies rate-limit to all requests
 
 //To make it clear to the consumer that the application is an API, prefix the endpoint with /api
-app.use('/api/v1', auth)
+app.use(`/api/${version}`, auth)
 // app.use('/api/*', authRoute, coaches)
-app.use('/api/v1/teams', authRoute, teams) //authRoute protects route using middleware (middleware/auth.js)
-app.use('/api/v1/players', authRoute, players)
-app.use('/api/v1/coaches', authRoute, coaches)
-app.use('/api/v1/records', authRoute, records)
-app.use('/api/v1/playerStats', authRoute, playerStats)
+app.use(`/api/${version}/teams`, authRoute, teams) //authRoute protects route using middleware (middleware/auth.js)
+app.use(`/api/${version}/players`, authRoute, players)
+app.use(`/api/${version}/coaches`, authRoute, coaches)
+app.use(`/api/${version}/records`, authRoute, records)
+app.use(`/api/${version}/playerStats`, authRoute, playerStats)
 
 // if endpoint does not exist catch 404 and forward to error handler
 app.use((req, res) => {

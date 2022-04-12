@@ -15,7 +15,6 @@ const playersSchema = new mongoose.Schema({
 
   position: {
     type: String,
-    required: true,
     maxlength: 100
   },
 

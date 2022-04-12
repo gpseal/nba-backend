@@ -6,13 +6,13 @@ import {
   getPlayers,
   createPlayer,
   updatePlayer,
-  getPlayerID,
+  getPlayerByID,
   deletePlayer
 } from '../controllers/players.js'
 
 // Four routes that are mapped to the functions above
 router.route('/').get(getPlayers).post(createPlayer)
-router.route('/:id').put(updatePlayer).get(getPlayerID).delete(deletePlayer)
+router.route('/:id').put(updatePlayer).get(getPlayerByID).delete(deletePlayer)
 
 // You can chain these if you wish. For example:
 // router.route("/").get(getInstitution).post(createInstitution)

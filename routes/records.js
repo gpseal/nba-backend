@@ -4,7 +4,7 @@ const router = Router() // Create a new router object. This allows to handle var
 // Importing the four functions
 import {
   getRecords,
-  getRecordID,
+  getRecordByID,
   createRecord,
   updateRecord,
   deleteRecord
@@ -12,6 +12,6 @@ import {
 
 // Four routes that are mapped to the functions above
 router.route('/').get(getRecords).post(createRecord)
-router.route('/:id').put(updateRecord).get(getRecordID).delete(deleteRecord)
+router.route('/:id').put(updateRecord).get(getRecordByID).delete(deleteRecord)
 
 export default router // You do not need to enclose router in curly braces

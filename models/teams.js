@@ -11,7 +11,7 @@ const teamsSchema = new mongoose.Schema({
 
   city: {
     type: String,
-    // required: true,
+    required: true,
     maxlength: 20
   },
 
@@ -22,13 +22,13 @@ const teamsSchema = new mongoose.Schema({
 
   division: {
     type: String,
-    // required: true,
+    required: true,
     maxlength: 20
   },
 
   conference: {
     type: String,
-    // required: true,
+    required: true,
     maxlength: 20
   },
 
