@@ -4,7 +4,7 @@
  * Course:  Introduction to app development
  *
  * For manipulating data within the Coaches collection.
- * Required functions are exported to the coaches.js file and perform the following tasks:
+ * Required functions are exported to the routes/coaches.js file and perform the following tasks:
  *
  * getCoaches: requests all coach data for display, can be filtered, paginated and sorted depending on URL query
  * createCoach: Adds new record to coaches collection

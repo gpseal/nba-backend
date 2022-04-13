@@ -1,3 +1,12 @@
+/**
+ * Author: Greg Seal
+ * Date: April 2022
+ * Course:  Introduction to app development
+ * 
+ * Imports functions from controllers/players.js and maps them to specified routes to be used when URLs are accessed
+ * 
+ */
+
 import { Router } from 'express'
 const router = Router() // Create a new router object. This allows to handle various requests
 

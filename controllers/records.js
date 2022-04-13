@@ -1,3 +1,18 @@
+/**
+ * Author: Greg Seal
+ * Date: April 2022
+ * Course:  Introduction to app development
+ *
+ * For manipulating data within the Records collection.
+ * Required functions are exported to the routes/records.js file and perform the following tasks:
+ *
+ * getRecords: requests all record data for display, can be filtered, paginated and sorted depending on URL query
+ * createRecord: Adds new record to records collection
+ * updateRecord: Updates specified existing record in collection
+ * getRecordByID: Displays specified record data
+ * deleteRecord:  Deletes specified record data
+ */
+
 import Record from '../models/records.js'
 import Team from '../models/teams.js'
 
@@ -99,6 +114,7 @@ const getRecordByID = async (req, res) => {
     const record = await Record.findById(id)
 
     if (!record) {
+      //if record does not exist
       return noID(res, id)
     }
 

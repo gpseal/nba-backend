@@ -1,3 +1,18 @@
+/**
+ * Author: Greg Seal
+ * Date: April 2022
+ * Course:  Introduction to app development
+ *
+ * For manipulating data within the Players collection.
+ * Required functions are exported to the routes/players.js file and perform the following tasks:
+ *
+ * getPlayers: requests all player data for display, can be filtered, paginated and sorted depending on URL query
+ * createPlayer: Adds new record to players collection
+ * updatePlayer: Updates specified existing record in collection
+ * getPlayerByID: Displays specified player record
+ * deletePlayer:  Deletes specified player record
+ */
+
 import Player from '../models/players.js'
 import Team from '../models/teams.js'
 

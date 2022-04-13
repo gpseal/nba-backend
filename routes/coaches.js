@@ -3,10 +3,9 @@
  * Date: April 2022
  * Course:  Introduction to app development
  * 
- * Imports functions from coaches.js and maps them to specified routes to be used when URLs are accessed
+ * Imports functions from controllers/coaches.js and maps them to specified routes to be used when URLs are accessed
  * 
  */
-
 
 import { Router } from 'express'
 const router = Router() // Create a new router object. This allows to handle various requests

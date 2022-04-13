@@ -1,7 +1,17 @@
-
-
-
-
+/**
+ * Author: Greg Seal
+ * Date: April 2022
+ * Course:  Introduction to app development
+ *
+ * For manipulating data within the PlayerStats collection.
+ * Required functions are exported to the routes/playerStats.js file and perform the following tasks:
+ *
+ * getPlayerStats: requests all playerStat data for display, can be filtered, paginated and sorted depending on URL query
+ * createPlayerStat: Adds new record to playerStats collection
+ * updatePlayerStat: Updates specified existing record in collection
+ * getPlayerStatByID: Displays specified playerStat record
+ * deletePlayerStat:  Deletes specified playerStat record
+ */
 
 import PlayerStat from '../models/playerStats.js'
 import Player from '../models/players.js'

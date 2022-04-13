@@ -1,4 +1,17 @@
-// import { teams } from "../data.js";
+/**
+ * Author: Greg Seal
+ * Date: April 2022
+ * Course:  Introduction to app development
+ *
+ * For manipulating data within the Teams collection.
+ * Required functions are exported to the routes/teams.js file and perform the following tasks:
+ *
+ * getTeams: requests all team data for display, can be filtered, paginated and sorted depending on URL query
+ * createTeam: Adds new team to teams collection
+ * updateTeam: Updates specified existing team in collection
+ * getTeamByID: Displays specified team data
+ * deleteTeam:  Deletes specified team data
+ */
 
 import Team from '../models/teams.js'
 
