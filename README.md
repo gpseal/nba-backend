@@ -5,6 +5,7 @@ cvb
 
 ****To run locally:****
 - Clone repository to local PC
+- Open a terminal and proceed with the following:
 - Install dependencies: $ npm install
 - Create .env file: $ cp example.env .env
 - Open .env file and complete with appropriate values
