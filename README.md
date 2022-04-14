@@ -6,7 +6,8 @@ cvb
 ****To run locally:****
 - Clone repository to local PC
 - Install dependencies: $ npm install
-- Add .env file to root directory with relevant information inserted
+- Create .env file: $ cp example.env .env
+- Open .env file and complete with appropriate values
 - Run app: $ npm start
 
 
@@ -39,3 +40,9 @@ https://id607001-sealgp1.herokuapp.com
 - Enter JWT_SECRET (from .env) and the appropriate string to set tocken password
 - Enter JWT_LIFETIME (from .env) and the appropriate value to set token lifespan
 - Copy the generated URL and use as required
+
+# References
+- Kanna, M. (20). How to Check if a JavaScript Array is Empty or Not with .length. freeCodeCamp. https://www.freecodecamp.org/news/check-if-javascript-array-is-empty-or-not-with-length
+- Tarpara, R. (2018, Oct 11). How to deal when calling a wrong endpoint using app.get? [Online forum post]. Stack Overflow. https://stackoverflow.com/questions/52552150/how-to-deal-when-calling-a-wrong-endpoint-using-app-get
+- freeCodeCamp.org. (2018, September 13). MongoDB Full Tutorial w/ Node.js, Express, & Mongoose [Video]. YouTube. https://www.youtube.com/watch?v=4yqu8YF29cU
+- Saturday Developer. (2020, July 29). Add Pagination using Node,Express, Mongo DB [Video]. YouTube. https://www.youtube.com/watch?v=1KTK6JplLLw
