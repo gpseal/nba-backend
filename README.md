@@ -20,7 +20,7 @@ cvb
 
 **Postman API**
 
-https://speeding-meteor-269502.postman.co/workspace/id607001-sealgp1~bb210d08-e5b3-463f-b005-63eb72fd3a6c/collection/19952142-d2f35f1f-df70-4349-a5b5-f5ebec7f661f?ctx=documentation
+https://documenter.getpostman.com/view/19952142/Uyr4KKjD#09b58324-b76e-4f42-bcaf-b6e065231108
 
 
 **Heroku API**
