@@ -19,13 +19,13 @@ import auth from './routes/auth.js'
 
 import authRoute from './middleware/auth.js' //import middleware, for checking authentication
 
-const version = "v1";
+const version = 'v1'
 
 dotenv.config()
 
 const app = express()
 
-app.use(helmet());
+app.use(helmet())
 
 const PORT = process.env.PORT || 3000 //assigns port to listen to
 
@@ -40,7 +40,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 app.use(cookieParser(process.env.JWT_SECRET))
 
-// app.use(limit); //applies rate-limit to all requests
+app.use(limit) //applies rate-limit to all requests
 
 //To make it clear to the consumer that the application is an API, prefix the endpoint with /api
 app.use(`/api/${version}`, auth)
@@ -56,7 +56,7 @@ app.use((req, res) => {
   return res.status(404).json({
     msg: 'Your page was not found'
   })
-});
+})
 
 //connects to mongo db
 const start = async () => {
