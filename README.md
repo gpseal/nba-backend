@@ -28,4 +28,14 @@ https://documenter.getpostman.com/view/19952142/Uyr4KKjD#09b58324-b76e-4f42-bcaf
 https://id607001-sealgp1.herokuapp.com
 
 **To deploy to Heroku**
-
+- Login to heroku.com
+- select the **"new"** dropdown menu and choose **"Create new app"**
+- Enter your chosen application name
+- Select the "Deploy" tab, choose GitHub deployment
+- Find and select the appropriate reprository to connect to
+- New options will appear, enable automatic deploys and choose the appropriate branch to deploy from
+- Under the settings tab, click "Reveal Config Vars"
+- Enter MONGO_URI (from .env) to connect to mongodb
+- Enter JWT_SECRET to set tocken password
+- Enter JWT_LIFETIME to set token lifespan
+- Copy the generated URL and use as required
