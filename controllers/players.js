@@ -43,12 +43,12 @@ const noID = (response, id) => {
 
 //SHOW ALL PLAYERS
 const getPlayers = async (req, res) => {
-  let sortOrder = -1
+  let sortOrder = 1
   let query = req.query
 
   //set sorting order
-  if (req.query.order_by == 'asc') {
-    sortOrder = 1
+  if (req.query.order_by == 'des') {
+    sortOrder = -1
   }
 
   try {
@@ -141,7 +141,7 @@ const createPlayer = async (req, res) => {
     await team.save()
     const newPlayers = await Player.find({})
 
-    displayData(newPlayers, res)
+    displayData(player, res)
   } catch (err) {
     errorMsg(res, err)
   }
