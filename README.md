@@ -35,7 +35,7 @@ https://id607001-sealgp1.herokuapp.com
 - Find and select the appropriate reprository to connect to
 - New options will appear, enable **automatic deploys** and choose the appropriate branch to deploy from
 - Under the **"settings"** tab, click **"Reveal Config Vars"**
-- Enter MONGO_URI (from .env) to connect to mongodb
-- Enter JWT_SECRET (from .env) to set tocken password
-- Enter JWT_LIFETIME (from .env) to set token lifespan
+- Enter MONGO_URI (from .env) and the appropriate string to connect to mongodb
+- Enter JWT_SECRET (from .env) and the appropriate string to set tocken password
+- Enter JWT_LIFETIME (from .env) and the appropriate value to set token lifespan
 - Copy the generated URL and use as required
