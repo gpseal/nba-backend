@@ -27,4 +27,4 @@ router
   .get(getPlayerStatByID)
   .delete(deletePlayerStat)
 
-export default router // You do not need to enclose router in curly braces
+export default router

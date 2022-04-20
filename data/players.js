@@ -1,7 +1,4 @@
-import mongoose from 'mongoose'
 
-// import Team from '../models/teams.js'
-// import { teams, Mavericks } from "../data/teams.js";
 import * as ID from '../data/data_IDs.js'
 
 const players = [

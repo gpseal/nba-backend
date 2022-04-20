@@ -1,4 +1,3 @@
-import mongoose from 'mongoose'
 
 import * as ID from '../data/data_IDs.js'
 
@@ -29,13 +28,6 @@ const coaches = [
     careerWins: 324,
     careerLosses: 299,
     team: ID.Suns
-  },
-  {
-    firstName: 'Craig',
-    lastName: 'Williams',
-    age: 52,
-    careerWins: 324,
-    careerLosses: 299,
   }
 ]
 

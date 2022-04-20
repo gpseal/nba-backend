@@ -23,4 +23,4 @@ import {
 router.route('/').get(getCoaches).post(createCoach)
 router.route('/:id').put(updateCoach).get(getCoachByID).delete(deleteCoach)
 
-export default router // You do not need to enclose router in curly braces
+export default router

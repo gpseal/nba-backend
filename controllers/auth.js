@@ -10,7 +10,6 @@
  * logout: Logs out user, expires cookie
  */
 
-
 import User from '../models/users.js'
 import getTokenUserData from '../utils/getTokenUserData.js'
 import { attachCookiesToResponse } from '../utils/jwt.js'

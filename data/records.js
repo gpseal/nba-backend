@@ -1,4 +1,3 @@
-import mongoose from 'mongoose'
 
 import * as ID from '../data/data_IDs.js'
 

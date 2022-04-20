@@ -23,4 +23,4 @@ import {
 router.route('/').get(getRecords).post(createRecord)
 router.route('/:id').put(updateRecord).get(getRecordByID).delete(deleteRecord)
 
-export default router // You do not need to enclose router in curly braces
+export default router

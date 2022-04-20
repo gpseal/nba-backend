@@ -23,5 +23,4 @@ import {
 router.route('/').get(getPlayers).post(createPlayer)
 router.route('/:id').put(updatePlayer).get(getPlayerByID).delete(deletePlayer)
 
-
-export default router // You do not need to enclose router in curly braces
+export default router

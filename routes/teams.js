@@ -19,8 +19,8 @@ import {
   deleteTeam
 } from '../controllers/teams.js'
 
+// Four routes that are mapped to the functions above
 router.route('/').get(getTeams).post(createTeam)
 router.route('/:id').put(updateTeam).get(getTeamByID).delete(deleteTeam)
 
-
-export default router // You do not need to enclose router in curly braces
+export default router
