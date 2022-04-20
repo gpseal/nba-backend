@@ -14,7 +14,12 @@ import User from '../models/users.js'
 import getTokenUserData from '../utils/getTokenUserData.js'
 import { attachCookiesToResponse } from '../utils/jwt.js'
 
-//CREATE REGISTER USER
+/**
+ * This function registers a new user that contains the info - name, email and password
+ * @param {Request} req
+ * @param {Response} res
+ * @returns JSON message if status = 201. Returns JSON error message if status = 500
+ */
 const register = async (req, res) => {
   try {
     const user = await User.create(req.body) //collect and store user data
@@ -27,7 +32,12 @@ const register = async (req, res) => {
   }
 }
 
-//LOGIN A USER
+/**
+ * This function checks for valid data and logs a user in while creating a token and storing in a cookie
+ * @param {Request} req
+ * @param {Response} res
+ * @returns Returns JSON error message if status = 401, 500
+ */
 const login = async (req, res) => {
   try {
     const { email, password } = req.body //get email and password from request body
@@ -56,7 +66,12 @@ const login = async (req, res) => {
   }
 }
 
-//LOGOUT A USER
+/**
+ * This function logs a user out of the database
+ * @param {Request} req
+ * @param {Response} res
+ * @returns JSON message if status = 200
+ */
 const logout = async (req, res) => {
   res.cookie('token', '', {
     httpOnly: true,

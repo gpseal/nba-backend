@@ -16,6 +16,12 @@
 import Coach from '../models/coaches.js'
 import Team from '../models/teams.js'
 
+/**
+ * This function displays requested data
+ * @param {dataName} dataName 
+ * @param {Response} response 
+ * @returns Returns JSON error message if status = 410. Displays data if status = 200
+ */
 const displayData = (dataName, response) => {
   //function to display data
   if (dataName.length === 0) {
@@ -26,6 +32,12 @@ const displayData = (dataName, response) => {
   } else return response.status(200).json({ success: true, data: dataName })
 }
 
+/**
+ * This function displays 500 error message
+ * @param {Response} response 
+ * @param {error} err 
+ * @returns Returns JSON error message if status = 500
+ */
 const errorMsg = (response, err) => {
   //function to display 500 error message
   return response.status(500).json({
@@ -33,6 +45,12 @@ const errorMsg = (response, err) => {
   })
 }
 
+/**
+ * This function displays error message if no ID exists
+ * @param {Response} response 
+ * @param {id} id
+ * @returns Returns JSON error message if status = 404
+ */
 const noID = (response, id) => {
   return response.status(404).json({
     success: false,
