@@ -7,6 +7,9 @@
 - Install dependencies: $ npm install
 - Create .env file: $ cp example.env .env
 - Open .env file and complete with appropriate values
+  - MONGO_URI = [string to connect to mongodb]
+  - JWT_SECRET = [string to set tocken password]
+  - JWT_LIFETIME = [value to set token lifespan]
 - Run app: $ npm start
 <br>
 
