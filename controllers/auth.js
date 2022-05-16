@@ -56,9 +56,21 @@ const login = async (req, res) => {
       return res.status(401).json({ success: false, msg: 'Invalid password' })
     }
 
-    const tokenUser = getTokenUserData(user)
-    attachCookiesToResponse({ res, user: tokenUser }) //from utils/jwt.js.  Creates token and stores in cookie
-    return res.status(201).json({ success: true, data: tokenUser })
+    //OLD CODE, CAN REMOVE
+    // const tokenUser = getTokenUserData(user)
+    // attachCookiesToResponse({ res, user: tokenUser }) //from utils/jwt.js.  Creates token and stores in cookie
+    // return res.status(201).json({ success: true, data: tokenUser })
+
+
+    const token = user.createJWT() /** Calling the createJWT() in Users.js */
+
+    //token in response so client can access it
+    return res.status(201).json({
+      success: true,
+      token: token,
+      msg: "User successfully logged in",
+    });
+
   } catch (err) {
     return res.status(500).json({
       msg: err.message || 'Something went wrong while logging in a user'

@@ -1,28 +1,27 @@
-//indicates that auth route is protected, that login is required to access
+import jwt from 'jsonwebtoken'
 
-import { isTokenValid } from '../utils/jwt.js'
-
-//function will be given as argument to routes that we want to protect
 const authRoute = async (req, res, next) => {
-  const token = req.signedCookies.token //request signed cookie
+  const authHeader = req.headers.authorization /** Please read this resource - https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization */
 
-  if (!token) {
-    //check that token exists for user
-    return res
-      .status(401)
-      .json({ success: false, msg: 'Invalid authentication' })
+  /** Check if a bearer token is given or a token starts with bearer */
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    console.log('No token provided')
   }
 
+  /** Verify only the token */
+  //Get token values without "Bearer".  Split token at space, take second part
+  const token = authHeader.split(' ')[1]
+
+  /** You have seen this before **/
+  //verify jwt, match with secret in .env file
   try {
-    //if token exists
-    const { userId } = isTokenValid({ token })
-    req.user = { userId: userId } //get user id from token
-    next() // go to next middleware request (inside app.js)
+    const payload = jwt.verify(token, process.env.JWT_SECRET)
+    //get user that is logged in, get user id and name
+    req.user = { userId: payload.userId, name: payload.name }
+    next()
   } catch (error) {
-    return res
-      .status(401)
-      .json({ success: false, msg: 'Invalid authentication' })
+    console.log('Not authorized to access this route')
   }
-}
+};
 
-export default authRoute
+export default authRoute;
