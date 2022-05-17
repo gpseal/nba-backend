@@ -2,6 +2,7 @@ import cookieParser from 'cookie-parser' //stores JWT cookies
 import dotenv from 'dotenv'
 import express from 'express'
 import helmet from 'helmet'
+import cors from 'cors'
 
 // rate limit
 import rateLimit from 'express-rate-limit'
@@ -26,6 +27,7 @@ dotenv.config()
 const app = express()
 
 app.use(helmet())
+app.use(cors())
 
 const PORT = process.env.PORT || 3000 //assigns port to listen to
 
