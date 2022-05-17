@@ -33,8 +33,8 @@ const PORT = process.env.PORT || 3000 //assigns port to listen to
 
 const limit = rateLimit({
   //settings for limiting traffic
-  windowMs: 10 * 60 * 1000, //10 mins
-  max: 5 //5 requests every 10 mins
+  windowMs: 1 * 60 * 1000, //1 min
+  max: 25 //25 requests every 1 min
 })
 
 //Express middleware
