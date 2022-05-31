@@ -113,6 +113,11 @@ const getTeams = async (req, res) => {
     else {
       const { limit = 5 } = req.query //sets defaults of page limit
       const teams = await Team.find(query) //display items that match query search
+        .populate("players")
+        .populate("coach")
+        .populate("record", [
+          "-team"
+        ])
         .limit(limit) //sets limit to be displayed
         .skip((query.page - 1) * limit) //sets page to be displayed
       displayData(teams, res)
