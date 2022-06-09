@@ -25,7 +25,6 @@ const playersSchema = new mongoose.Schema({
 
   team: {
     type: mongoose.Schema.Types.ObjectId,
-    required: true,
     ref: 'Team'
   },
 
