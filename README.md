@@ -27,28 +27,29 @@
 https://documenter.getpostman.com/view/19952142/Uyr4KKjD#09b58324-b76e-4f42-bcaf-b6e065231108
 <br><br>
 
-**Heroku URL**
+**Render URL**
 
-https://id607001-sealgp1.herokuapp.com
+https://nba-api-bvui.onrender.com
 <br><br>
 
-**To deploy to Heroku**
-- Login to heroku.com
-- select the **"new"** dropdown menu and choose **"Create new app"**
+**To deploy to Render**
+- Login to render.com
+- select the **"new +"** dropdown menu and choose **"Web Service"**
+- Choose "Build and deploy from a Git repository"
 - Enter your chosen application name
 - Select the **"Deploy"** tab, choose **GitHub** deployment
-- Find and select the appropriate reprository to connect to
-- New options will appear, enable **automatic deploys** and choose the appropriate branch to deploy from
-- Under the **"settings"** tab, click **"Reveal Config Vars"**
+- Find and select the appropriate reprository to connect to and press "connect"
+- Enter a name
+- Enter 'npm install' as the build command
+- Enter 'npm start' as the start command
+- Towards the bottom of the page, press 'advanced' to reveal more options
+- Enter appropriate Enironmental variables
 - Enter MONGO_URI (from .env) and the appropriate string to connect to mongodb
 - Enter JWT_SECRET (from .env) and the appropriate string to set tocken password
 - Enter JWT_LIFETIME (from .env) and the appropriate value to set token lifespan
+- Once statisfied, press the 'Create Web Service' button to complete the process
 - Copy the generated URL and use as required
 
-**Alternatively, if the current version of Heroku is not compatible with auto deploy**
-- Download and install Heroku CLI - https://devcenter.heroku.com/articles/heroku-cli#install-the-heroku-cli
-- Connect to your project: $ heroku git:remote -a [name of your Heroku project]
-- Deploy your current version: $ git push heroku main.
 <br>
   
 # References
